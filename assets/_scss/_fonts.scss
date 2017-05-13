@@ -1,0 +1,43 @@
+// Oxygen
+
+@font-face {
+  font-family: 'Oxygen';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/assets/fonts/Oxygen-300/Oxygen-300.eot');
+  src: url('/assets/fonts/Oxygen-300/Oxygen-300.eot?#iefix') format('embedded-opentype'),
+       local('Oxygen Light'),
+       local('Oxygen-300'),
+       url('/assets/fonts/Oxygen-300/Oxygen-300.woff2') format('woff2'),
+       url('/assets/fonts/Oxygen-300/Oxygen-300.woff') format('woff'),
+       url('/assets/fonts/Oxygen-300/Oxygen-300.ttf') format('truetype'),
+       url('/assets/fonts/Oxygen-300/Oxygen-300.svg#Oxygen') format('svg');
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/assets/fonts/Oxygen-regular/Oxygen-regular.eot');
+  src: url('/assets/fonts/Oxygen-regular/Oxygen-regular.eot?#iefix') format('embedded-opentype'),
+       local('Oxygen'),
+       local('Oxygen-regular'),
+       url('/assets/fonts/Oxygen-regular/Oxygen-regular.woff2') format('woff2'),
+       url('/assets/fonts/Oxygen-regular/Oxygen-regular.woff') format('woff'),
+       url('/assets/fonts/Oxygen-regular/Oxygen-regular.ttf') format('truetype'),
+       url('/assets/fonts/Oxygen-regular/Oxygen-regular.svg#Oxygen') format('svg');
+}
+
+@font-face {
+  font-family: 'Oxygen';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/Oxygen-700/Oxygen-700.eot');
+  src: url('/assets/fonts/Oxygen-700/Oxygen-700.eot?#iefix') format('embedded-opentype'),
+       local('Oxygen Bold'),
+       local('Oxygen-700'),
+       url('/assets/fonts/Oxygen-700/Oxygen-700.woff2') format('woff2'),
+       url('/assets/fonts/Oxygen-700/Oxygen-700.woff') format('woff'),
+       url('/assets/fonts/Oxygen-700/Oxygen-700.ttf') format('truetype'),
+       url('/assets/fonts/Oxygen-700/Oxygen-700.svg#Oxygen') format('svg');
+}

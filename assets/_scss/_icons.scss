@@ -1,0 +1,38 @@
+@font-face {
+  font-family: 'icomoon';
+  src: url('/assets/fonts/Icons/icomoon.eot?786z7a');
+  src: url('/assets/fonts/Icons/icomoon.eot?786z7a#iefix') format('embedded-opentype'),
+    url('/assets/fonts/Icons/icomoon.ttf?786z7a') format('truetype'),
+    url('/assets/fonts/Icons/icomoon.woff?786z7a') format('woff'),
+    url('/assets/fonts/Icons/icomoon.svg?786z7a#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class*="icon-"]:before,
+.icon-extension {
+  display: inline-block;
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+// icomoon generated icons
+
+.icon-githob:before {
+  content: "\e900";
+}
+.icon-logo:before {
+  content: "\e901";
+}
+.icon-superman:before {
+  content: "\e902";
+}

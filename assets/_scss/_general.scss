@@ -1,0 +1,139 @@
+html {
+  font-size: $fs-base;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  background: $clr-1;
+  text-align: left;
+  font-family: $ff-1;
+  line-height: $lh-default;
+  color: $clr-3;
+}
+
+// hiding
+
+.hide-screen {
+  @include hide-screen();
+
+  &.focusable:active,
+  &.focusable:focus {
+    position: static;
+    overflow: visible;
+    clip: auto;
+    margin: 0;
+    width: auto;
+    height: auto;
+  }
+}
+
+.hide-mobile {
+  @include breakpoint-s-less {@include hide-screen();}
+}
+
+// interactive element focus
+
+a,
+button,
+input,
+select,
+textarea {
+  &:focus {outline: 1px dotted;}
+}
+
+// elements
+
+img {
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+
+embed,
+iframe,
+object {max-width: 100%;}
+
+// anchors
+
+a {
+  font-weight: 400;
+  color: inherit;
+  text-decoration: underline;
+
+  @include breakpoint-m {
+    &:hover {text-decoration: none;}
+  }
+}
+
+// buttons
+
+.button.button,
+span.soon { 
+  display: inline-block;
+  border-radius: 0;
+  border: 0;
+  border-radius: 3px;
+  padding: 0.7em 1rem;
+  background: $clr-3;
+  text-align: center;
+  font-family: $ff-1;
+  font-weight: 400;
+  font-size: $fs-14;
+  line-height: inherit;
+  color: white;
+  cursor: pointer;
+  text-decoration: none;
+  -webkit-appearance: none;
+
+  @include breakpoint-m {
+    &:hover {
+      background: black;
+    }
+  }
+
+  &.secondary {
+    background: rgba(#7C7A7C,0.2);
+    color: $clr-3;
+
+    @include breakpoint-m {
+      &:hover {
+        background: rgba(#7C7A7C,0.3);
+      }
+    }
+  }
+  
+  span.convert-emoji,
+  img.emojione {
+    display: inline-block;
+    margin: 0 0.6rem 0 -0.2rem;
+  }
+}
+
+span.soon {
+  background: #383738!important;
+  color: $clr-4;
+  cursor: default;
+}
+
+// headings
+
+h1,h2,h3,h4,h5,h6 {line-height: $lh-headings;}
+
+h1 {font-size: $fs-40; font-weight: 300;}
+h2 {font-size: $fs-20; font-weight: 700;}
+
+// alignment
+
+h1, h2, h3, h4, h5, h6,
+p, pre, blockquote, ul, ol, dl, figure, table {margin-bottom: $vmargin;}
+
+// emojis
+
+img.emojione {
+  display: inline-block;
+  vertical-align: middle;
+  max-width: 1.25em;
+}

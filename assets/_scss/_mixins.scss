@@ -1,0 +1,66 @@
+@mixin clearfix() {
+  display: table;
+  clear: both;
+  content: "";
+}
+
+@mixin hide-screen() {
+  position: absolute;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  width: 1px;
+  height: 1px;
+}
+
+// breakpoints (min-width == wider than : max-width == narrower than)
+
+@mixin breakpoint-s-less {
+  @media (max-width: #{$s - 0.01}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-s {
+  @media (min-width: #{$s}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-m-less {
+  @media (max-width: #{$m - 0.01}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-m {
+  @media (min-width: #{$m}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-l {
+  @media (min-width: #{$l}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-xl {
+  @media (min-width: #{$xl}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-s2m { // small to medium only
+  @media (min-width: #{$s}) and (max-width: #{$m - 0.01}) {
+    @content;
+  }
+}
+
+@mixin breakpoint-m2l { // medium to large only
+  @media (min-width: #{$m}) and (max-width: #{$l - 0.01}) {
+    @content;
+  }
+}

@@ -1,0 +1,44 @@
+// colours
+
+$clr-1: #FFEE77; // yellow
+$clr-2: #161416; // dark 1 - general text & dark background strip
+$clr-3: #272527; // dark 2 - headings
+$clr-4: #748188; // lighter text
+
+// font family
+
+$ff-1: "Oxygen", "Ubuntu", "Cantarell", "Open Sans", "Helvetica Neue", Sans-Serif;
+
+// font sizes - variable number is px
+
+$fs-40: 2.5rem;
+$fs-32: 2rem;
+$fs-24: 1.5rem;
+$fs-20: 1.25rem;
+$fs-18: 1.125rem;
+$fs-16: 1rem;
+$fs-14: 0.875rem;
+$fs-12: 0.688rem;
+
+// line heights
+
+$lh-default: 1.5; // 24px on 100% text
+$lh-headings: 1.25; // line height for headings
+
+// layout settings
+
+$gutter: 1.25rem; // 20px - universal gutters
+$spacing: 1.25rem; // 20px - universal spacing used throughout and multiplied if required
+$vmargin: 1.25rem; // 20px - vertical margin applied to <p>, <ul>, <h2>, etc
+
+// media query breakpoints
+
+$s: 480px;
+$m: 768px;
+$l: 1024px;
+$xl: 1200px;
+
+// general
+
+$site-width: 100rem;
+$fs-base: 100%; // 16px if user browser settings remain unchanged

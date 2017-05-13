@@ -1,0 +1,444 @@
+// header
+
+header[role="banner"] { 
+  padding: $spacing 0;
+  background: $clr-1;
+
+  h1 {
+    margin-bottom: 0;
+
+    .home & {
+      text-align: center;
+
+      @include breakpoint-m {
+        text-align: left;
+        margin-top: $spacing;
+      }
+    }
+
+    a {
+      display: inline-flex;
+      align-items: center;
+      text-decoration: none;
+ 
+      &:before {
+        flex: 0 0 auto;
+        font-size: $fs-32;
+      }
+
+      span {
+        margin-left: 1rem;
+        font-size: $fs-24;
+        .home & {@include hide-screen();}
+      }
+    }
+  }
+}
+
+// main
+
+main[role="main"] {
+  padding: $spacing 0;
+  background: white;
+
+  .home & {padding: 0;}
+}
+
+// footer 
+
+footer[role="contentinfo"] {
+  padding: ($spacing * 2) 0;
+  background: $clr-1;
+  text-align: center;
+
+  p {
+    margin-bottom: 0;
+    font-size: $fs-12;
+  }
+}
+
+// section styles
+
+div.section {
+  padding: ($spacing * 2) 0;
+
+  @include breakpoint-m {padding: ($spacing * 3) 0;}
+
+  div.text {
+    text-align: center;
+
+    @include breakpoint-m {
+      max-width: 28rem;
+      width: 100%; // ie10 fix to stop text from running out of parent
+      text-align: left;
+    }
+  
+    h2 {
+      span.convert-emoji,
+      img.emojione {
+        display: block;
+        vertical-align: middle;
+        margin: 0 auto 0.25rem;
+
+        @include breakpoint-m {
+          display: inline-block;
+          margin: 0 0.25rem 0 0;
+        }
+      }
+
+      span.text {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  div.image {
+    @include breakpoint-m-less {
+      padding: 0; // larger images on mobile
+    }
+  }
+
+  // the 3 style sections
+
+  &.style-1 {
+    // yellow section
+    background: $clr-1;
+  }  
+  
+  &.style-2 {
+    // white section
+    background: white;
+    
+    @include breakpoint-m {
+      div.row {
+        > div.col {
+          display: flex;
+          align-items: center;
+
+          &:first-child {
+            order: 99; // switches the text col to the right
+          }
+        }
+      }
+    }
+  }  
+
+  &.style-3 {
+    // dark/black section
+    background: $clr-2;
+    color: white;
+
+    div.text {
+      margin: 0 auto;
+      text-align: center;
+
+      h2 {
+        span.convert-emoji,
+        img.emojione {
+          display: block;
+          margin: 0 auto 0.25rem;
+        }
+      }
+
+      p {color: $clr-4;}
+    }
+  }
+  
+  // specific sections - these are generally responsive image positioning
+
+  &.intro {
+    overflow: hidden;
+    padding-top: 0;
+    
+    @include breakpoint-m {padding-top: $spacing;}
+    @include breakpoint-l {overflow: visible;}
+
+    h1 span.os {white-space: nowrap;}
+    
+    div.image {
+      @include breakpoint-m {
+        margin: (-$spacing) 0 -16rem;
+
+        img {
+          max-width: none;
+          width: 125%;
+        }
+      }
+
+      @include breakpoint-l {
+        margin-top: -5rem;
+
+        img {
+          max-width: 100%;
+          width: 100%;
+        }
+      }
+    }    
+
+    @include breakpoint-xl {
+      div.text {
+        max-width: none;
+        font-size: $fs-20;
+
+        a.button,
+        span.soon {font-size: $fs-18;}
+      }
+    }
+  }
+
+  &.secure {
+    @include breakpoint-l {
+      padding-top: 5rem;
+      div.image {padding-right: 6rem;}
+    }
+
+    @include breakpoint-xl {padding-top: 8rem;}
+  }
+
+  &.smart {
+    @include breakpoint-l {
+      div.image {padding-right: 6rem;}
+    }
+  }
+
+  &.private {
+    div.text {margin-bottom: 2rem;}
+
+    @include breakpoint-m {
+      div.image {margin-bottom: -18rem;}
+
+      div.row {
+        >:first-child {padding-right: 0;}
+        >:last-child {padding-left: 0;}
+      }
+    }
+  }
+
+  &.more {
+    @include breakpoint-m {
+      padding-top: 16rem;
+    }
+
+    div.text {
+      max-width: none;
+
+      h2, div.download {text-align: center;}
+
+      h2 {
+        &:before,
+        span {
+          @include breakpoint-m {
+            display: inline-block;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+  }
+  
+  // section with testimonials
+
+  &.testimonials {
+    padding: 0;
+    text-align: center;
+
+    div.row {
+      margin: 0;
+
+      > div.col {
+        padding: ($spacing * 2) 0;
+
+        @include breakpoint-m {
+          padding: ($spacing * 3) 0;
+        }
+
+        &:first-child {
+          background: $clr-1;
+        }
+
+        &:last-child {
+          background: #1D1B1D;
+          color: white;
+        }
+
+        div.wrap {max-width: ($site-width / 2.25);}
+      }
+    }
+
+    blockquote {
+      margin-bottom: 0;
+
+      > p {
+        margin-bottom: ($vmargin * 2);
+        font-size: $fs-24;
+
+        &:before {
+          display: block;
+          margin-bottom: $vmargin;
+          font-size: $fs-32;
+
+          @include breakpoint-m {margin-bottom: ($vmargin * 2);}
+        }
+      }
+
+      footer {
+        p {
+          margin-bottom: 0;
+          font-size: $fs-14;
+          text-transform: uppercase;
+
+          span.avatar {
+            display: inline-block;
+            vertical-align: middle;
+            overflow: hidden;
+            max-width: 1.75rem;
+
+            @include breakpoint-l {margin-right: 0.5rem;}
+
+            img {
+              display: block;
+              border-radius: 50%;
+            }
+          }
+
+          span.text {
+            display: block;
+
+            @include breakpoint-l {
+              display: inline-block;
+              vertical-align: middle;
+            }
+
+            strong {
+              display: block;
+              margin-top: 0.25rem;
+
+              @include breakpoint-l {
+                display: inline-block;
+                margin-top: 0;
+              }
+            }
+
+            span {color: $clr-4;}
+          }
+        }
+      }
+    }
+  }
+}
+
+// download buttons - in the intro section
+
+ul.download-buttons {
+
+  li {
+    display: block;
+
+    @include breakpoint-s {
+      display: inline-block;
+      &:first-child {margin-right: 0.25rem;}
+    }
+
+    a.button,
+    span.soon {
+      margin: 0.25rem auto;
+      width: 100%;
+
+      @include breakpoint-s {
+        width: auto;
+      }
+    }
+  }
+}
+
+// features in the more section
+
+ul.features {
+  margin: ($vmargin * 2) auto ($vmargin * 3);
+  max-width: 34rem;
+  text-align: center;
+
+  @include breakpoint-m {
+    margin: ($vmargin * 3) auto ($vmargin * 4);
+    text-align: left;
+  }
+
+  li {
+    position: relative;
+    margin-bottom: ($vmargin * 1.5);
+    
+    @include breakpoint-m {
+      padding: 0 0 0 4rem;
+    }
+    
+    span.convert-emoji,
+    img.emojione {
+      display: block;
+      margin: 0 auto 0.25rem;
+      font-size: $fs-20;
+
+      @include breakpoint-m {
+        position: absolute;
+        top: 2px; left: 0;
+        margin: 0;
+        font-size: $fs-16;
+      }
+    }
+  }
+}
+
+// download - in the more section
+
+div.download {
+
+  h2,a.button {
+    @include breakpoint-m {
+      display: inline-block;
+      vertical-align: middle;
+    }
+  }
+
+  h2 {
+    @include breakpoint-m {
+      margin: 0 4rem 0 0;
+    }
+
+    &:before {
+      display: block;
+      margin-bottom: 1rem;
+      font-size: $fs-32;
+
+      @include breakpoint-m {
+        display: inline-block;
+        margin: 0 1rem 0 0;
+        vertical-align: text-bottom;
+      }
+    }
+  }
+
+  a.button {
+    width: 100%;
+    @include breakpoint-s {width: auto;}
+  }
+}
+
+// bullet list
+
+ul.disc {
+  margin-left: 1.25rem;
+  list-style: disc;
+
+  li {margin: 0.5rem 0;}
+  ul {margin-left: 1.25rem;}
+}
+
+// numbered list
+
+ol.decimal {
+  margin-left: 1.25rem;
+  list-style: decimal;
+
+  li {margin: 0.5rem 0;}
+  ol {margin-left: 1.25rem;}
+}

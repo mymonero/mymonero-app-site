@@ -1,0 +1,24 @@
+* {
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  font-size: 100%;
+  vertical-align: baseline;
+}
+
+body {line-height: 1.0;}
+ol, ul {list-style: none;}
+blockquote, q {quotes: none;}
+blockquote:before, blockquote:after, q:before, q:after {content: ''; content: none;}
+table {border-collapse: collapse; border-spacing: 0;}
+
+article, aside, details, figcaption, figure, main, footer, header, menu, nav, section {display: block;}
+
+html {box-sizing: border-box;}
+
+*,
+*:before,
+*:after {box-sizing: inherit;}
+
+button::-moz-focus-inner {border: 0; padding: 0;}

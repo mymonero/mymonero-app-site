@@ -1,0 +1,41 @@
+// page content width
+
+.wrap {
+  margin: 0 auto;
+  padding: 0 $gutter;
+  max-width: $site-width;
+
+  @include breakpoint-m {
+    padding: 0 ($gutter * 2);
+
+    .narrow & {max-width: ($site-width / 2);}
+  }  
+}
+
+// grid
+
+.row {
+  margin-left: -$gutter; margin-right: -$gutter;
+
+  @include breakpoint-m {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+  }
+
+  > .col {
+    padding: 0 $gutter;
+
+    @include breakpoint-m {
+      flex: 1 1 auto;
+
+      &.col-1 {width: 12.5%;}
+      &.col-2 {width: 25%;}
+      &.col-3 {width: 37.5%;}
+      &.col-4 {width: 50%;}
+      &.col-5 {width: 62.5%;}
+      &.col-6 {width: 75%;}
+      &.col-7 {width: 87.5%;} 
+    }
+  }
+}
