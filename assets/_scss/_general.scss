@@ -67,7 +67,9 @@ a {
     &:hover {text-decoration: none;}
   }
 }
-
+strong, strong > a {
+  font-weight: bold;
+}
 // buttons
 
 .button.button,
