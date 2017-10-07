@@ -47,7 +47,7 @@ main[role="main"] {
 // footer 
 
 footer[role="contentinfo"] {
-  padding: ($spacing * 2) 0;
+  padding: ($spacing) 0 ($spacing * 2) 0;
   background: $clr-1;
   text-align: center;
 
@@ -417,6 +417,21 @@ div.download {
     }
   }
 
+  a.button {
+    width: 100%;
+    @include breakpoint-s {width: auto;}
+  }
+}
+div.webwallet {
+
+  text-align: center;
+  margin-top: ($spacing);
+
+  a.button {
+    display: inline-block;
+    vertical-align: middle;
+    margin: 5px 10px;
+  }
   a.button {
     width: 100%;
     @include breakpoint-s {width: auto;}
