@@ -8,7 +8,7 @@ All app source code and assets copyright © 2014-2017 by MyMonero. All rights re
 
 ## Architecture Notes
 
-* Written in jekyll
+* Written with Jekyll, SCSS, HTML, and Javascript
 
 
 ## Repository Setup
