@@ -38,11 +38,11 @@ Please submit any bugs as Issues unless they have already been reported.
 
 * 👨‍🚀 `endogenic` ([Paul Shapiro](https://github.com/paulshapiro)) Maintainer; MyMonero partner
 
-* 🦄 `fluffypony` ([Riccardo Spagni](https://github.com/fluffypony)) MyMonero partner
+* 🎁 `fluffypony` ([Riccardo Spagni](https://github.com/fluffypony)) MyMonero partner
 
 
 ### Major Contributors
 
-* 🎁 `mds` ([Matt Smith](http://mds.is)) Website v1 designer
+* ⚡️ `mds` ([Matt Smith](http://mds.is)) Website v1 designer
 
-* ⚡️ `tfi_charmers` Built v1 jekyll site
+* ⛄️ `tfi_charmers` Built v1 jekyll site
