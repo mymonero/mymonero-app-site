@@ -47,7 +47,7 @@ main[role="main"] {
 // footer 
 
 footer[role="contentinfo"] {
-  padding: ($spacing) 0 ($spacing * 2) 0;
+  padding: 0 0 ($spacing * 2) 0;
   background: $clr-1;
   text-align: center;
 
@@ -425,7 +425,7 @@ div.download {
 div.webwallet {
 
   text-align: center;
-  margin-top: ($spacing);
+  margin-top: (3*$spacing);
 
   a.button {
     display: inline-block;
