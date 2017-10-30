@@ -15,15 +15,25 @@ All app source code and assets copyright © 2014-2017 by MyMonero. All rights re
 
 ### Pre-requisites
 
-* Jekyll
+* Jekyll (`gem install jekyll`)
+
+* bundler (`gem install bundler`)
 
 ### Running dev server
 
-1. Clone or download this repo.s
+#### Setup
+
+1. Clone or download this repo.
 
 2. `cd` into the repo directory.
 
-3. Run `jekyll serve`
+3. (Possibly optional) `bundle install`
+
+#### Running
+
+1. Run `jekyll serve` 
+
+	* Note: you may need to prefix this with `bundle exec` if you get a matching error
 
 ## Contributing
 
