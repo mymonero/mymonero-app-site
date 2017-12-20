@@ -64,7 +64,8 @@ mm.initialiser = {
     }
     //
     function updateOsName() {
-      document.querySelector(".os").innerHTML = 'for ' + osName;
+      const display_osName = osName == "Mac OS" ? "macOS" : osName;
+      document.querySelector(".os").innerHTML = 'for ' + display_osName;
     }
   },
   //
