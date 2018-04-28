@@ -47,7 +47,7 @@ main[role="main"] {
 // footer 
 
 footer[role="contentinfo"] {
-  padding: 0 0 ($spacing * 2) 0;
+  padding: ($spacing) 0 ($spacing * 2) 0;
   background: $clr-1;
   text-align: center;
 
