@@ -29,176 +29,213 @@
 //
 "use strict";
 //
-(function(){
-//
-var parser = new UAParser(),
-	parserResult = parser.getResult(),
-	osName = parserResult.os.name;
-//
-// Create global namespace
-//
-var mm = mm || {};
-//
-var desktopVersionString = '1.0.0'
-var iosVersionString = '1.0'
-//
-var desktopGitHubUrl = 'https://github.com/mymonero/mymonero-app-js/releases'
-var iosAppAppleID = "1372508199"
-var iosAppStoreUrl = "https://itunes.apple.com/us/app/apple-store/id" + iosAppAppleID + "?mt=8"
-var releasesInfo = 
+function newDownloadLink__mac(version)
 {
-	mac: {
-		downloadUrl: 'https://mymonero.com/downloads/mac',
-		downloadTitleSuffix: ' .DMG',
-		githubUrl: desktopGitHubUrl,
-		version: desktopVersionString
-	},
-	windows: {
-		downloadUrl: 'https://mymonero.com/downloads/windows',
-		downloadTitleSuffix: ' .exe',
-		githubUrl: desktopGitHubUrl,
-		version: desktopVersionString
-	},
-	linux: {
-		downloadUrl: 'https://mymonero.com/downloads/linux',
-		downloadTitleSuffix: ' .AppImage',
-		githubUrl: desktopGitHubUrl,
-		version: desktopVersionString
-	},
-	ios: {
-		downloadUrl: iosAppStoreUrl,
-		downloadTitleSuffix: ' &rarr; App Store',
-		githubUrl: 'https://github.com/mymonero/mymonero-app-ios',
-		version: iosVersionString
-	}
+	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero-"+version+".dmg"
+}
+function newDownloadLink__win(version)
+{
+	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero.Setup."+version+".exe"
+}
+function newDownloadLink__lin(version)
+{
+	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero-"+version+"-x86_64.AppImage"
 }
 //
-// Initialiser
-//
-mm.initialiser = {
-	uaParser: function() {
-		//
-		// console.log(osName);
-		// Possible 'os.name'
-		// AIX, Amiga OS, Android, Arch, Bada, BeOS, BlackBerry, CentOS, Chromium OS, Contiki, Fedora, Firefox OS, FreeBSD, Debian, DragonFly, Gentoo, GNU, Haiku, Hurd, iOS, Joli, Linpus, Linux, Mac OS, Mageia, Mandriva, MeeGo, Minix, Mint, Morph OS, NetBSD, Nintendo, OpenBSD, OpenVMS, OS/2, Palm, PCLinuxOS, Plan9, Playstation, QNX, RedHat, RIM Tablet OS, RISC OS, Sailfish, Series40, Slackware, Solaris, SUSE, Symbian, Tizen, Ubuntu, UNIX, VectorLinux, WebOS, Windows [Phone/Mobile], Zenwalk
-		//
-		//
-		//
-		var mainButtons = document.querySelector(".download-buttons")
-		if (osName.match(/^Android$/)) {
-			addSoonStatus(' for Android');
-			var platform_releasesInfo = releasesInfo["ios"] // for now
-			addTopButton_github(
-				platform_releasesInfo.githubUrl,
-				platform_releasesInfo.version
-			)
-			updateOsName(releasesInfo_key);
-			return
-		}
+function getOS()
+{
+	const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
+	const platform = window.navigator.platform;
+	if (['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'Mac OS X', 'macOS'].indexOf(platform) !== -1) {
+		return 'Mac OS';
+	} else if (['iPhone', 'iPad', 'iPod', 'iOS'].indexOf(platform) !== -1 && !window.MSStream) {
+		return 'iOS';
+	} else if (['Win32', 'Win64', 'Windows', 'WinCE'].indexOf(platform) !== -1) {
+		return 'Windows';
+	} else if (/windows phone/i.test(userAgent)) { // Windows Phone must come first because its UA may also contain "Android"
+		return 'Windows Phone';
+	} else if (/Android/.test(userAgent) || /Android/.test(platform)) {
+		return 'Android';
+	} else if (/(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)/.test(userAgent)) {
+		return 'Linux';
+	}
+	return 'Mac OS'; // fallback
+}
+function getQueryStringValue(key)
+{  
+	return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
+} 
 
-		var releasesInfo_key = null;
-		if(osName.match(/^(Mac OS)$/)) {
-			releasesInfo_key = 'mac'
-		} else if(osName.match(/^(Windows)$/)) {
-			releasesInfo_key = 'windows'
-		} else if(osName.match(/^iOS$/)) {
-			releasesInfo_key = "ios"
-		} else if(osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
-			// TODO: this might be missing some --^
-			releasesInfo_key = "linux"
-		} else { // fall back to linux ... anything else like Amiga OS could be filtered
-			releasesInfo_key = "linux"
-		}
-		//
-		var platform_releasesInfo = releasesInfo[releasesInfo_key]
-		addDownloadButtons(
-			platform_releasesInfo.downloadUrl,
-			platform_releasesInfo.githubUrl,
-			platform_releasesInfo.version,
-			platform_releasesInfo.downloadTitleSuffix // NOTE this may be undefined
-		)
-		updateOsName(releasesInfo_key);
-		//
-		function addDownloadButtons(
-			downloadUrl,
-			githubUrl,
-			shortVersionString,
-			downloadTitleSuffix_orUndef
-		) {
-			//
-			// insert top buttons
-			var downloadButton_title = "Download"
-			if (typeof downloadTitleSuffix_orUndef !== 'undefined' && downloadTitleSuffix_orUndef) {
-				downloadButton_title += downloadTitleSuffix_orUndef
-			}
-			var download_listIndexLayer = document.createElement('li')
-			download_listIndexLayer.innerHTML = '<a href="'
-					+ downloadUrl
-					+'" class="button download-app">'
-					+ '<span class="convert-emoji" aria-hidden="true">&#x1F447;</span>'
-					+ '<span class="text"><b>' + downloadButton_title + '</b></span>'
-				+'</a>';
-			mainButtons.appendChild(download_listIndexLayer);
-			//
-			addTopButton_github(
-				githubUrl,
-				shortVersionString
-			)
-			//
-			// insert bottom button
-			var bottom_downloadButtonLayer; // not wrapped in an 'li'
-			{
-				var tmpContainer = document.createElement('div')
-				tmpContainer.innerHTML = '<a href="' + downloadUrl +  '" class="button extra-button">'
-						+ '<span class="text">' + downloadButton_title + '</span>'
-					+ '</a>'
-				bottom_downloadButtonLayer = tmpContainer.firstChild
-			}
-			var bottomDownloadContainer = document.querySelector('.bottom-download-container')
-			bottomDownloadContainer.appendChild(bottom_downloadButtonLayer) // after the h2; not wrapped in 'li'
-		}
-		function addTopButton_github(githubUrl, shortVersionString)
-		{
-			var github_listIndexLayer = document.createElement('li')
-			github_listIndexLayer.innerHTML = '<a href="' + githubUrl + '" class="button secondary">'
-					+ '<span class="text">Version ' + shortVersionString + ' &rarr; GitHub</span>'
-				+ '</a>';
-			mainButtons.appendChild(github_listIndexLayer);
-		}
-		//
-		function addSoonStatus(comingSoonSuffix_orUndefined) {
-			var soon_listIndexLayer = document.createElement('li')
-			soon_listIndexLayer.innerHTML = '<span class="soon">'
-					+ '<span class="text">Coming soon&#x2122;'+ (comingSoonSuffix_orUndefined||"") + '</span>'
-				+ '</span>';
-			mainButtons.appendChild(soon_listIndexLayer);
-		}
-		//
-		function updateOsName(releasesInfo_key) {
-			const display_osName = releasesInfo_key == "mac" ? "macOS" : osName;
-			document.querySelector(".os").innerHTML = 'for ' + display_osName;
-		}
-	},
+
+(function(){
+//
+document.addEventListener("DOMContentLoaded", function()
+{
+	const osName = getOS();
+	var mm = mm || {};
 	//
-	// replace unicode characters with emojione images unless OS is stated
+	var desktopVersionString = '1.1.3'
+	var iosVersionString = '1.1.3'
 	//
-	emojione: function() {
-		if(osName.match(/^((?!(Mac OS|iOS|Android)).)*$/)) {
-			emojione.imagePathPNG = '//cdn.jsdelivr.net/emojione/assets/3.0/png/64/';
-			var emojis = document.querySelectorAll('.convert-emoji');
-			Array.prototype.forEach.call(emojis, function(el, i){
-				var original = el.innerHTML,
-						converted = emojione.toImage(original);
-				el.outerHTML = converted;
-			});
+	var desktopGitHubUrl = 'https://github.com/mymonero/mymonero-app-js/releases'
+	var iosAppAppleID = "1372508199"
+	var iosAppStoreUrl = "https://itunes.apple.com/us/app/apple-store/id" + iosAppAppleID + "?mt=8"
+	var releasesInfo = 
+	{
+		mac: {
+			downloadUrl: newDownloadLink__mac(desktopVersionString),
+			downloadTitleSuffix: ' .DMG',
+			githubUrl: desktopGitHubUrl,
+			version: desktopVersionString
+		},
+		windows: {
+			downloadUrl: newDownloadLink__win(desktopVersionString),
+			downloadTitleSuffix: ' .exe',
+			githubUrl: desktopGitHubUrl,
+			version: desktopVersionString
+		},
+		linux: {
+			downloadUrl: newDownloadLink__lin(desktopVersionString),
+			downloadTitleSuffix: ' .AppImage',
+			githubUrl: desktopGitHubUrl,
+			version: desktopVersionString
+		},
+		ios: {
+			downloadUrl: iosAppStoreUrl,
+			downloadTitleSuffix: ' &rarr; App Store',
+			githubUrl: 'https://github.com/mymonero/mymonero-app-ios',
+			version: iosVersionString
 		}
 	}
-};
-//
-// Call the functions
-//
-var mymonero = mm.initialiser;
-mymonero.uaParser();
-mymonero.emojione();
+	//
+	// Initialiser
+	//
+	mm.initialiser = {
+		uaParser: function() {
+			var mainButtons = document.querySelector(".download-buttons")
+			if (osName.match(/^Android$/)) {
+				addSoonStatus(' for Android');
+				var platform_releasesInfo = releasesInfo["ios"] // for now
+				addTopButton_github(
+					platform_releasesInfo.githubUrl,
+					platform_releasesInfo.version
+				)
+				updateOsName(releasesInfo_key);
+				return
+			}
+
+			var releasesInfo_key = null;
+			if(osName.match(/^(Mac OS)$/)) {
+				releasesInfo_key = 'mac'
+			} else if(osName.match(/^(Windows)$/)) {
+				releasesInfo_key = 'windows'
+			} else if(osName.match(/^iOS$/)) {
+				releasesInfo_key = "ios"
+			} else if(osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
+				// TODO: this might be missing some --^
+				releasesInfo_key = "linux"
+			} else { // fall back to linux ... anything else like Amiga OS could be filtered
+				releasesInfo_key = "linux"
+			}
+			//
+			var platform_releasesInfo = releasesInfo[releasesInfo_key]
+			addDownloadButtons(
+				platform_releasesInfo.downloadUrl,
+				platform_releasesInfo.githubUrl,
+				platform_releasesInfo.version,
+				platform_releasesInfo.downloadTitleSuffix // NOTE this may be undefined
+			)
+			updateOsName(releasesInfo_key);
+			//
+			function addDownloadButtons(
+				downloadUrl,
+				githubUrl,
+				shortVersionString,
+				downloadTitleSuffix_orUndef
+			) {
+				//
+				// insert top buttons
+				var downloadButton_title = "Download"
+				if (typeof downloadTitleSuffix_orUndef !== 'undefined' && downloadTitleSuffix_orUndef) {
+					downloadButton_title += downloadTitleSuffix_orUndef
+				}
+				var download_listIndexLayer = document.createElement('li')
+				download_listIndexLayer.innerHTML = '<a href="'
+						+ downloadUrl
+						+'" class="button download-app">'
+						+ '<span class="convert-emoji" aria-hidden="true">&#x1F447;</span>'
+						+ '<span class="text"><b>' + downloadButton_title + '</b></span>'
+					+'</a>';
+				mainButtons.appendChild(download_listIndexLayer);
+				//
+				addTopButton_github(
+					githubUrl,
+					shortVersionString
+				)
+				//
+				// insert bottom button
+				var bottom_downloadButtonLayer; // not wrapped in an 'li'
+				{
+					var tmpContainer = document.createElement('div')
+					tmpContainer.innerHTML = '<a href="' + downloadUrl +  '" class="button extra-button">'
+							+ '<span class="text">' + downloadButton_title + '</span>'
+						+ '</a>'
+					bottom_downloadButtonLayer = tmpContainer.firstChild
+				}
+				var bottomDownloadContainer = document.querySelector('.bottom-download-container')
+				bottomDownloadContainer.appendChild(bottom_downloadButtonLayer) // after the h2; not wrapped in 'li'
+			}
+			function addTopButton_github(githubUrl, shortVersionString)
+			{
+				var github_listIndexLayer = document.createElement('li')
+				github_listIndexLayer.innerHTML = '<a href="' + githubUrl + '" class="button secondary">'
+						+ '<span class="text">Version ' + shortVersionString + ' &rarr; GitHub</span>'
+					+ '</a>';
+				mainButtons.appendChild(github_listIndexLayer);
+			}
+			//
+			function addSoonStatus(comingSoonSuffix_orUndefined) {
+				var soon_listIndexLayer = document.createElement('li')
+				soon_listIndexLayer.innerHTML = '<span class="soon">'
+						+ '<span class="text">Coming soon&#x2122;'+ (comingSoonSuffix_orUndefined||"") + '</span>'
+					+ '</span>';
+				mainButtons.appendChild(soon_listIndexLayer);
+			}
+			//
+			function updateOsName(releasesInfo_key) {
+				const display_osName = releasesInfo_key == "mac" ? "macOS" : osName;
+				document.querySelector(".os").innerHTML = 'for ' + display_osName;
+			}
+
+			setTimeout(function()
+			{
+				const open_support = getQueryStringValue("open_support")
+				if (open_support == "1" || open_support == "true" || open_support) {
+					window.Intercom('show')
+				}
+			}, 300)
+		},
+		//
+		// replace unicode characters with emojione images unless OS is stated
+		//
+		emojione: function() {
+			if(osName.match(/^((?!(Mac OS|iOS|Android)).)*$/)) {
+				emojione.imagePathPNG = '//cdn.jsdelivr.net/emojione/assets/3.0/png/64/';
+				var emojis = document.querySelectorAll('.convert-emoji');
+				Array.prototype.forEach.call(emojis, function(el, i){
+					var original = el.innerHTML,
+							converted = emojione.toImage(original);
+					el.outerHTML = converted;
+				});
+			}
+		}
+	};
+	//
+	// Call the functions
+	//
+	var mymonero = mm.initialiser;
+	mymonero.uaParser();
+	mymonero.emojione();
+});
 //
 })();

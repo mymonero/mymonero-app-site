@@ -1,1 +1,1 @@
-bundle exec jekyll serve
+JEKYLL_ENV=development bundle exec jekyll serve
