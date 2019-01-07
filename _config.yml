@@ -29,6 +29,8 @@ gems:
 exclude:
   - Gemfile
   - Gemfile.lock
+  - README.md
+  - bin
 sass:
     sass_dir: assets/_scss
     style: compressed
