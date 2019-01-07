@@ -179,7 +179,7 @@ div.section {
     @include breakpoint-xl {
       div.text {
         max-width: none;
-        font-size: $fs-24;
+        font-size: $fs-20;
 
         a.button,
         span.soon {font-size: $fs-18;}
