@@ -84,19 +84,19 @@ document.addEventListener("DOMContentLoaded", function()
 	{
 		mac: {
 			downloadUrl: newDownloadLink__mac(desktopVersionString),
-			downloadTitleSuffix: ' .DMG',
+			downloadTitleSuffix: ' (Mac)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
 		windows: {
 			downloadUrl: newDownloadLink__win(desktopVersionString),
-			downloadTitleSuffix: ' .exe',
+			downloadTitleSuffix: ' (Windows)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
 		linux: {
 			downloadUrl: newDownloadLink__lin(desktopVersionString),
-			downloadTitleSuffix: ' .AppImage',
+			downloadTitleSuffix: ' (Linux)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
