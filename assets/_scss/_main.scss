@@ -481,21 +481,21 @@ div.download {
     @include breakpoint-s {width: auto;}
   }
 }
+
 div.webwallet {
-
-  text-align: center;
   margin-top: (1.5*$spacing);
-  @include breakpoint-s { margin-top: (3*$spacing); }
+  text-align: center;
+  @include breakpoint-s {margin-top: (3*$spacing);}
 
   a.button {
-    display: inline-block;
-    vertical-align: middle;
-    margin: 5px 10px;
-  }
-  a.button {
-    width: 100%;
-    margin-top: (1.5*$spacing);
-    @include breakpoint-s {width: auto; margin-top: 5px;}
+    display: block;
+    margin: (1.5*$spacing) 0 0;
+
+    @include breakpoint-s {
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 1rem;
+    }
   }
 }
 
