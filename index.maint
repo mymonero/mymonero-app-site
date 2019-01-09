@@ -1,0 +1,14 @@
+<html>
+<head>
+<title>MyMonero is temporarily offline</title>
+</head>
+<body style="background-color: #37414f; text-align: center; font-family: verdana;">
+<div style="margin-bottom: auto; margin-top: 15%; color: #FFF;">
+MyMonero is temporarily offline for maintenance, and will be back online as soon as possible.
+<br /><br />
+Please accept our apologies for this disruption.
+<br /><br />
+<img src="/assets/images/whitelogo.png" style="width: 50%;" />
+</div>
+</body>
+</html>
