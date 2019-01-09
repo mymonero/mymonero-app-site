@@ -39,7 +39,7 @@ function newDownloadLink__win(version)
 }
 function newDownloadLink__lin(version)
 {
-	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero-"+version+"-x86_64.AppImage"
+	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero."+version+".AppImage"
 }
 //
 function getOS()
