@@ -94,7 +94,7 @@ div.section {
   }
   div.text.two-col {
     @include breakpoint-m {
-      max-width: 40rem;
+      max-width: 80%;
     }
     .col {
       padding: 0 $gutter;
