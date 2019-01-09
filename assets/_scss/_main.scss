@@ -92,6 +92,14 @@ div.section {
       }
     }
   }
+  div.text.two-col {
+    @include breakpoint-m {
+      max-width: 40rem;
+    }
+    .col {
+      padding: 0 $gutter;
+    }
+  }
 
   div.image {
     @include breakpoint-m-less {
@@ -133,6 +141,13 @@ div.section {
       margin: 0 auto;
       text-align: center;
 
+      p {
+        text-align: left;
+      }
+      p.short {
+        text-align: center;
+      }
+
       h2 {
         span.convert-emoji,
         img.emojione {
@@ -155,14 +170,28 @@ div.section {
     @include breakpoint-l {overflow: visible;}
 
     h1 span.os {white-space: nowrap;}
-    
+
+    div.text {  
+      p {
+        margin: 0 auto 1.65rem auto;
+        max-width: 26rem;
+      }
+      @include breakpoint-m {
+        p {
+          margin-left: 0;
+          margin-right: 0;
+          max-width: 26rem;
+        }
+      }
+    }
+
     div.image {
       @include breakpoint-m {
         margin: (-$spacing) 0 -16rem;
 
         img {
           max-width: none;
-          width: 125%;
+          width: 140%;
         }
       }
 
@@ -181,8 +210,12 @@ div.section {
         max-width: none;
         font-size: $fs-20;
 
+        p {
+          max-width: 30rem;
+        }
+
         a.button,
-        span.soon {font-size: $fs-18;}
+        span.soon {font-size: $fs-16;}
       }
     }
   }
@@ -190,7 +223,12 @@ div.section {
   &.secure {
     @include breakpoint-l {
       padding-top: 5rem;
-      div.image {padding-right: 6rem;}
+      div.image {padding-right: 4rem;}
+    }
+    @include breakpoint-m {
+      div.col {
+        padding: 0 ($gutter * 2) 0 0;
+      }
     }
 
     @include breakpoint-xl {padding-top: 8rem;}
@@ -198,7 +236,12 @@ div.section {
 
   &.smart {
     @include breakpoint-l {
-      div.image {padding-right: 6rem;}
+      div.image {padding-right: 4rem;}
+    }
+    @include breakpoint-m {
+      div.col {
+        padding: 0 ($gutter * 2) 0 0;
+      }
     }
   }
 
@@ -209,8 +252,8 @@ div.section {
       div.image {margin-bottom: -18rem;}
 
       div.row {
-        >:first-child {padding-right: 0;}
-        >:last-child {padding-left: 0;}
+        >:first-child.image {padding-right: 0;}
+        >:last-child.image {padding-left: 0;}
       }
     }
   }
@@ -255,11 +298,25 @@ div.section {
 
         &:first-child {
           background: $clr-1;
+          blockquote {
+            footer {
+              span.text {
+                span {color: rgba(0,0,0,0.5);}
+              }
+            }
+          }
         }
 
         &:last-child {
           background: #1D1B1D;
           color: white;
+          blockquote {
+            footer {
+              span.text {
+                span {color: $clr-4;}
+              }
+            }
+          }
         }
 
         div.wrap {max-width: ($site-width / 2.25);}
@@ -320,10 +377,10 @@ div.section {
               }
             }
 
-            span {color: $clr-4;}
           }
         }
       }
+
     }
   }
 }
@@ -337,7 +394,7 @@ ul.download-buttons {
 
     @include breakpoint-s {
       display: inline-block;
-      &:first-child {margin-right: 0.25rem;}
+      &:first-child {margin-right: 0.5rem;}
     }
 
     a.button,
@@ -356,10 +413,11 @@ ul.download-buttons {
 
 ul.features {
   margin: ($vmargin * 2) auto ($vmargin * 3);
-  max-width: 34rem;
+  max-width: 24rem;
   text-align: center;
 
   @include breakpoint-m {
+  max-width: 31rem;
     margin: ($vmargin * 3) auto ($vmargin * 4);
     text-align: left;
   }
@@ -369,20 +427,20 @@ ul.features {
     margin-bottom: ($vmargin * 1.5);
     
     @include breakpoint-m {
-      padding: 0 0 0 4rem;
+      padding: 0 0 0 3rem;
     }
     
     span.convert-emoji,
     img.emojione {
       display: block;
       margin: 0 auto 0.25rem;
-      font-size: $fs-20;
+      font-size: $fs-24;
 
       @include breakpoint-m {
         position: absolute;
-        top: 2px; left: 0;
+        top: -2px; left: 0;
         margin: 0;
-        font-size: $fs-16;
+        font-size: $fs-24;
       }
     }
   }
@@ -407,9 +465,10 @@ div.download {
     &:before {
       display: block;
       margin-bottom: 1rem;
-      font-size: $fs-32;
+      font-size: $fs-42;
 
       @include breakpoint-m {
+        font-size: $fs-32;
         display: inline-block;
         margin: 0 1rem 0 0;
         vertical-align: text-bottom;
@@ -425,7 +484,8 @@ div.download {
 div.webwallet {
 
   text-align: center;
-  margin-top: (3*$spacing);
+  margin-top: (1.5*$spacing);
+  @include breakpoint-s { margin-top: (3*$spacing); }
 
   a.button {
     display: inline-block;
@@ -434,7 +494,8 @@ div.webwallet {
   }
   a.button {
     width: 100%;
-    @include breakpoint-s {width: auto;}
+    margin-top: (1.5*$spacing);
+    @include breakpoint-s {width: auto; margin-top: 5px;}
   }
 }
 

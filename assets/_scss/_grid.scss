@@ -2,11 +2,11 @@
 
 .wrap {
   margin: 0 auto;
-  padding: 0 $gutter;
+  padding: 0 ($gutter * 2);
   max-width: $site-width;
 
   @include breakpoint-m {
-    padding: 0 ($gutter * 2);
+    padding: 0 ($gutter * 4);
 
     .narrow & {max-width: ($site-width / 2);}
   }  
