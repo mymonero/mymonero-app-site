@@ -111,6 +111,11 @@ document.addEventListener("DOMContentLoaded", function()
 		}
 	}
 	//
+	document.querySelector('a.mac-download-link').setAttribute('href', newDownloadLink__mac(desktopVersionString))
+	document.querySelector('a.win-download-link').setAttribute('href', newDownloadLink__win(desktopVersionString))
+	document.querySelector('a.linux-download-link').setAttribute('href', newDownloadLink__lin(desktopVersionString))
+
+	//
 	// Initialiser
 	//
 	mm.initialiser = {

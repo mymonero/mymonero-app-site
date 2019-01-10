@@ -528,3 +528,20 @@ ol.decimal {
   li {margin: 0.5rem 0;}
   ol {margin-left: 1.25rem;}
 }
+
+a.icon-link {
+  text-decoration: none;
+  white-space: nowrap;
+
+  img {
+    display: inline-block;
+  }
+  span.icon-link-text-styler {
+    text-decoration: underline; // a bit of a hack to allow for &nbsp; that's not underlined
+  }
+}
+a.icon-link:hover {
+  span.icon-link-text-styler {
+    text-decoration: none; // per normal a tag :hover
+  }
+}
