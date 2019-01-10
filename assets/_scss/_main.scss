@@ -408,15 +408,20 @@ ul.download-buttons {
     }
   }
 }
-.text {
-  span.accessory {
-    font-size: $fs-14;
-    color: rgba(0,0,0,0.7);
-  }
-}
-.intro {
+.section.intro {
   ul.download-buttons {
     margin-bottom: 0.5rem;
+  }
+  .text {
+    .accessory {
+      font-size: $fs-14;
+      color: rgba(0,0,0,0.7);
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .accessory.coming-soon {
+      margin-top: 1.5rem;
+    }
   }
 }
 // features in the more section

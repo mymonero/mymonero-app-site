@@ -65,7 +65,7 @@ function getQueryStringValue(key)
 {  
 	return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
 } 
-function osDisplayNameFor(releasesInfo_key)
+function osDisplayNameFor(releasesInfo_key, osName)
 {
 	return releasesInfo_key == "mac" ? "macOS" : osName;
 }
@@ -121,43 +121,6 @@ document.addEventListener("DOMContentLoaded", function()
 	mm.initialiser = {
 		uaParser: function() {
 			var mainButtons = document.querySelector(".download-buttons")
-			if (osName.match(/^Android$/)) {
-				addSoonStatus(' for Android');
-				var platform_releasesInfo = releasesInfo["ios"] // for now
-				addTopButton_github(
-					platform_releasesInfo.githubUrl,
-					platform_releasesInfo.version
-				)
-				updateOsName(releasesInfo_key);
-				return
-			}
-
-			var releasesInfo_key = null;
-			if (osName.match(/^(Mac OS)$/)) {
-				releasesInfo_key = 'mac'
-			} else if (osName.match(/^(Windows)$/)) {
-				releasesInfo_key = 'windows'
-			} else if (osName.match(/^iOS$/)) {
-				releasesInfo_key = "ios"
-			} else if (osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
-				// TODO: this might be missing some --^
-				releasesInfo_key = "linux"
-			} else { // fall back to linux ... anything else like Amiga OS could be filtered
-				releasesInfo_key = "linux"
-			}
-			//
-			var platform_releasesInfo = releasesInfo[releasesInfo_key]
-			addDownloadButtons(
-				platform_releasesInfo.downloadUrl,
-				platform_releasesInfo.githubUrl,
-				platform_releasesInfo.version,
-				platform_releasesInfo.downloadTitleSuffix // NOTE this may be undefined
-			)
-			updateOsName(releasesInfo_key);
-			//
-			mainButtons.insertAdjacentHTML("afterend", `<span class="accessory">Not on ${osDisplayNameFor(releasesInfo_key)}? <a href="#cross-platform">See other platforms</a></span>`);
-
-			//
 			function addDownloadButtons(
 				downloadUrl,
 				githubUrl,
@@ -205,18 +168,55 @@ document.addEventListener("DOMContentLoaded", function()
 				mainButtons.appendChild(github_listIndexLayer);
 			}
 			//
-			function addSoonStatus(comingSoonSuffix_orUndefined) {
-				var soon_listIndexLayer = document.createElement('li')
-				soon_listIndexLayer.innerHTML = '<span class="soon">'
-						+ '<span class="text">Coming soon&#x2122;'+ (comingSoonSuffix_orUndefined||"") + '</span>'
-					+ '</span>';
-				mainButtons.appendChild(soon_listIndexLayer);
+			function addQuickAccessWebWalletTopButton()
+			{
+				const li = document.createElement("li")
+				li.innerHTML = `<a href="https://wallet.mymonero.com/" class="button extra-button">`
+					+ `<span class="text">Quick access wallet online</span>`
+				+ `</a>`
+				mainButtons.appendChild(li);
 			}
-			//
 			//
 			function updateOsName(releasesInfo_key)
 			{
-				document.querySelector(".os").innerHTML = 'for ' + osDisplayNameFor(releasesInfo_key);
+				document.querySelector(".os").innerHTML = 'for ' + osDisplayNameFor(releasesInfo_key, osName);
+			}
+			//
+			const isAndroid = osName.match(/^Android$/)
+			if (isAndroid) {
+				addQuickAccessWebWalletTopButton()
+				var platform_releasesInfo = releasesInfo["ios"] // for now
+				addTopButton_github(
+					platform_releasesInfo.githubUrl,
+					platform_releasesInfo.version
+				)
+			} else {
+				var releasesInfo_key = null;
+				if (osName.match(/^(Mac OS)$/)) {
+					releasesInfo_key = 'mac'
+				} else if (osName.match(/^(Windows)$/)) {
+					releasesInfo_key = 'windows'
+				} else if (osName.match(/^iOS$/)) {
+					releasesInfo_key = "ios"
+				} else if (osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
+					// TODO: this might be missing some --^
+					releasesInfo_key = "linux"
+				} else { // fall back to linux ... anything else like Amiga OS could be filtered
+					releasesInfo_key = "linux"
+				}
+				var platform_releasesInfo = releasesInfo[releasesInfo_key]
+				addDownloadButtons(
+					platform_releasesInfo.downloadUrl,
+					platform_releasesInfo.githubUrl,
+					platform_releasesInfo.version,
+					platform_releasesInfo.downloadTitleSuffix // NOTE this may be undefined
+				)
+				updateOsName(releasesInfo_key);
+			}
+			//
+			mainButtons.insertAdjacentHTML("afterend", `<p class="accessory">Not on ${osDisplayNameFor(releasesInfo_key, osName)}? <a href="#cross-platform">See other platforms</a></p>`);
+			if (isAndroid) {
+				mainButtons.insertAdjacentHTML("afterend", `<p class="accessory coming-soon"><i><strong>Coming soon for Android</strong></i></p>`);
 			}
 
 			setTimeout(function()
