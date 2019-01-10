@@ -56,7 +56,7 @@ function getOS()
 		return 'Windows Phone';
 	} else if (/Android/.test(userAgent) || /Android/.test(platform)) {
 		return 'Android';
-	} else if (/(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)/.test(userAgent)) {
+	} else if (/(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat|CrOS)/.test(userAgent)) {
 		return 'Linux';
 	}
 	return 'Mac OS'; // fallback
