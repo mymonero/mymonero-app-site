@@ -408,7 +408,17 @@ ul.download-buttons {
     }
   }
 }
-
+.text {
+  span.accessory {
+    font-size: $fs-14;
+    color: rgba(0,0,0,0.7);
+  }
+}
+.intro {
+  ul.download-buttons {
+    margin-bottom: 0.5rem;
+  }
+}
 // features in the more section
 
 ul.features {

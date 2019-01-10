@@ -65,7 +65,10 @@ function getQueryStringValue(key)
 {  
 	return decodeURIComponent(window.location.search.replace(new RegExp("^(?:.*[&\\?]" + encodeURIComponent(key).replace(/[\.\+\*]/g, "\\$&") + "(?:\\=([^&]*))?)?.*$", "i"), "$1"));  
 } 
-
+function osDisplayNameFor(releasesInfo_key)
+{
+	return releasesInfo_key == "mac" ? "macOS" : osName;
+}
 
 (function(){
 //
@@ -125,13 +128,13 @@ document.addEventListener("DOMContentLoaded", function()
 			}
 
 			var releasesInfo_key = null;
-			if(osName.match(/^(Mac OS)$/)) {
+			if (osName.match(/^(Mac OS)$/)) {
 				releasesInfo_key = 'mac'
-			} else if(osName.match(/^(Windows)$/)) {
+			} else if (osName.match(/^(Windows)$/)) {
 				releasesInfo_key = 'windows'
-			} else if(osName.match(/^iOS$/)) {
+			} else if (osName.match(/^iOS$/)) {
 				releasesInfo_key = "ios"
-			} else if(osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
+			} else if (osName.match(/^(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat)$/)) {
 				// TODO: this might be missing some --^
 				releasesInfo_key = "linux"
 			} else { // fall back to linux ... anything else like Amiga OS could be filtered
@@ -146,6 +149,9 @@ document.addEventListener("DOMContentLoaded", function()
 				platform_releasesInfo.downloadTitleSuffix // NOTE this may be undefined
 			)
 			updateOsName(releasesInfo_key);
+			//
+			mainButtons.insertAdjacentHTML("afterend", `<span class="accessory">Not on ${osDisplayNameFor(releasesInfo_key)}? <a href="#cross-platform">See other platforms</a></span>`);
+
 			//
 			function addDownloadButtons(
 				downloadUrl,
@@ -202,9 +208,10 @@ document.addEventListener("DOMContentLoaded", function()
 				mainButtons.appendChild(soon_listIndexLayer);
 			}
 			//
-			function updateOsName(releasesInfo_key) {
-				const display_osName = releasesInfo_key == "mac" ? "macOS" : osName;
-				document.querySelector(".os").innerHTML = 'for ' + display_osName;
+			//
+			function updateOsName(releasesInfo_key)
+			{
+				document.querySelector(".os").innerHTML = 'for ' + osDisplayNameFor(releasesInfo_key);
 			}
 
 			setTimeout(function()
