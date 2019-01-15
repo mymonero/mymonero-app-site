@@ -29,18 +29,10 @@
 //
 "use strict";
 //
-function newDownloadLink__mac(version)
-{
-	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero-"+version+".dmg"
-}
-function newDownloadLink__win(version)
-{
-	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero.Setup."+version+".exe"
-}
-function newDownloadLink__lin(version)
-{
-	return "https://github.com/mymonero/mymonero-app-js/releases/download/v"+version+"/MyMonero."+version+".AppImage"
-}
+const downloadLink__mac = "https://mymonero.com/downloads/mac"
+const downloadLink__win = "https://mymonero.com/downloads/win"
+const downloadLink__linux = "https://mymonero.com/downloads/linux"
+const downloadLink__ios = "https://mymonero.com/downloads/ios"
 //
 function getOS()
 {
@@ -81,40 +73,36 @@ document.addEventListener("DOMContentLoaded", function()
 	var iosVersionString = '1.1.6'
 	//
 	var desktopGitHubUrl = 'https://github.com/mymonero/mymonero-app-js/releases'
-	var iosAppAppleID = "1372508199"
-	var iosAppStoreUrl = "https://itunes.apple.com/us/app/apple-store/id" + iosAppAppleID + "?mt=8"
 	var releasesInfo = 
 	{
 		mac: {
-			downloadUrl: newDownloadLink__mac(desktopVersionString),
+			downloadUrl: downloadLink__mac,
 			downloadTitleSuffix: ' (Mac)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
 		windows: {
-			downloadUrl: newDownloadLink__win(desktopVersionString),
+			downloadUrl: downloadLink__win,
 			downloadTitleSuffix: ' (Windows)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
 		linux: {
-			downloadUrl: newDownloadLink__lin(desktopVersionString),
+			downloadUrl: downloadLink__linux,
 			downloadTitleSuffix: ' (Linux)',
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
 		ios: {
-			downloadUrl: iosAppStoreUrl,
+			downloadUrl: downloadLink__ios,
 			downloadTitleSuffix: ' &rarr; App Store',
 			githubUrl: 'https://github.com/mymonero/mymonero-app-ios',
 			version: iosVersionString
 		}
 	}
-	//
-	document.querySelector('a.mac-download-link').setAttribute('href', newDownloadLink__mac(desktopVersionString))
-	document.querySelector('a.win-download-link').setAttribute('href', newDownloadLink__win(desktopVersionString))
-	document.querySelector('a.linux-download-link').setAttribute('href', newDownloadLink__lin(desktopVersionString))
-
+	document.querySelector('a.mac-download-link').setAttribute('href', downloadLink__mac)
+	document.querySelector('a.win-download-link').setAttribute('href', downloadLink__win)
+	document.querySelector('a.linux-download-link').setAttribute('href', downloadLink__linux)
 	//
 	// Initialiser
 	//
