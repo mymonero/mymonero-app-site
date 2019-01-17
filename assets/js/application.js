@@ -202,6 +202,9 @@ document.addEventListener("DOMContentLoaded", function()
 				updateOsName(releasesInfo_key);
 			}
 			//
+			if (!isAndroid) {
+				mainButtons.insertAdjacentHTML("afterend", `<p class="accessory">Or, <a href="https://wallet.mymonero.com">Access Wallet Online</a></p>`);
+			}
 			mainButtons.insertAdjacentHTML("afterend", `<p class="accessory">Not on ${osDisplayNameFor(releasesInfo_key, osName)}? <a href="#cross-platform">See other platforms</a></p>`);
 			if (isAndroid) {
 				mainButtons.insertAdjacentHTML("afterend", `<p class="accessory coming-soon"><i><strong>Coming soon for Android</strong></i></p>`);
