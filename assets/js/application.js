@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function()
 	const osName = getOS();
 	var mm = mm || {};
 	//
-	var desktopVersionString = '1.1.6'
-	var iosVersionString = '1.1.6'
+	var desktopVersionString = '1.1.8'
+	var iosVersionString = '1.1.8'
 	//
 	var desktopGitHubUrl = 'https://github.com/mymonero/mymonero-app-js/releases'
 	var releasesInfo = 
