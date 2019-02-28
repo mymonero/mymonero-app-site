@@ -203,7 +203,7 @@ document.addEventListener("DOMContentLoaded", function()
 			}
 			//
 			if (!isAndroid) {
-				mainButtons.insertAdjacentHTML("afterend", `<p class="accessory secondary">Or, <a href="https://wallet.mymonero.com" class="strong">Access Wallet Online</a></p>`);
+				mainButtons.insertAdjacentHTML("afterend", `<p class="accessory secondary">Or, <a href="https://wallet.mymonero.com" class="strong">Access Web Wallet</a></p>`);
 			}
 			mainButtons.insertAdjacentHTML("afterend", `<p class="accessory">Not on ${osDisplayNameFor(releasesInfo_key, osName)}? <a href="#cross-platform">See other platforms</a></p>`);
 			if (isAndroid) {
