@@ -15,6 +15,10 @@ All app source code and assets copyright © 2014-2019 by MyMonero. All rights re
 
 ### Pre-requisites
 
+* Install Ruby using your package manager. E.g. for Ubuntu (`sudo apt-get install ruby`)
+
+* Install Ruby Development tools. E.g. for Ubuntu (`sudo apt-get install ruby2.7-dev`)
+
 * Jekyll (`gem install jekyll`)
 
 * bundler (`gem install bundler`)
@@ -27,13 +31,13 @@ All app source code and assets copyright © 2014-2019 by MyMonero. All rights re
 
 2. `cd` into the repo directory.
 
-3. (Possibly optional) `bundle install`
+3. `bundle install`
 
 #### Running
 
 1. Run `jekyll serve` 
 
-	* Note: you may need to prefix this with `bundle exec` if you get a matching error
+	* Note: you may receive an error similar to the following: "/usr/lib/ruby/2.7.0/bundler/runtime.rb:312:in "check_for_activated_spec!': You have already activated public_suffix 4.0.6, but your Gemfile requires public_suffix 3.0.3. Prepending `bundle exec` to your command may solve this. (Gem::LoadError)" need to prefix this with `bundle exec` if you get a matching error
 
 ## Contributing
 
