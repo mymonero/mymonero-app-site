@@ -47,8 +47,12 @@ Please submit any bugs as Issues unless they have already been reported.
 
 
 ## Authors
+* 💱 jkarlos (Karl Buys) Maintainer
 
-* 👨‍🚀 `endogenic` ([Paul Shapiro](https://github.com/paulshapiro)) Maintainer
+* 🍕 Tekkzbadger (Devin Pearson) Maintainer
+
+
+* 👨‍🚀 `endogenic` ([Paul Shapiro](https://github.com/paulshapiro)) Former core maintainer
 
 * ⚡️ `mds` ([Matt Smith](http://mds.is)) Website v1 designer
 
