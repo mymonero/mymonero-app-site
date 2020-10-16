@@ -111,7 +111,6 @@ document.addEventListener("DOMContentLoaded", function()
 	document.querySelector('a.mac-download-link').setAttribute('href', downloadLink__mac)
 	document.querySelector('a.win-download-link').setAttribute('href', downloadLink__win)
 	document.querySelector('a.linux-download-link').setAttribute('href', downloadLink__linux)
-	console.log(downloadLink__win);
 	//
 	// Initialiser
 	//

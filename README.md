@@ -47,7 +47,7 @@ Please submit any bugs as Issues unless they have already been reported.
 
 
 ## Authors
-* 💱 jkarlos (Karl Buys) Maintainer
+* 💱 j_karlos (Karl Buys) Maintainer
 
 * 🍕 Tekkzbadger (Devin Pearson) Maintainer
 
