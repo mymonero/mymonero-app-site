@@ -29,11 +29,20 @@
 //
 "use strict";
 //
-const downloadLink__mac = "https://mymonero.com/downloads/mac"
-const downloadLink__win = "https://mymonero.com/downloads/win"
-const downloadLink__linux = "https://mymonero.com/downloads/linux"
-const downloadLink__ios = "https://mymonero.com/downloads/ios"
+
+const desktopVersionString = '1.1.16-beta'
+const iosVersionString = '1.1.10'
+const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
+
+const downloadLink__mac = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.dmg`
+const downloadLink__win = `${githubUrl}/v${desktopVersionString}/MyMonero-Setup-${desktopVersionString}.exe`
+const downloadLink__linux = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.AppImage`
+const downloadLink__ios = "https://apps.apple.com/us/app/apple-store/id1372508199"
+
+// https://github.com/mymonero/mymonero-app-js/releases/download/v1.1.13/MyMonero-Setup-1.1.13.exe
+// https://github.com/mymonero/mymonero-app-js/releases/tag/v1.1.16-beta
 //
+
 function getOS()
 {
 	const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
@@ -69,8 +78,7 @@ document.addEventListener("DOMContentLoaded", function()
 	const osName = getOS();
 	var mm = mm || {};
 	//
-	var desktopVersionString = '1.1.12'
-	var iosVersionString = '1.1.10'
+
 	//
 	var desktopGitHubUrl = 'https://github.com/mymonero/mymonero-app-js/releases'
 	var releasesInfo = 
@@ -109,12 +117,7 @@ document.addEventListener("DOMContentLoaded", function()
 	mm.initialiser = {
 		uaParser: function() {
 			var mainButtons = document.querySelector(".download-buttons")
-			function addDownloadButtons(
-				downloadUrl,
-				githubUrl,
-				shortVersionString,
-				downloadTitleSuffix_orUndef
-			) {
+			function addDownloadButtons(downloadUrl, githubUrl,	shortVersionString,	downloadTitleSuffix_orUndef) {
 				//
 				// insert top buttons
 				var downloadButton_title = "Download"
@@ -130,10 +133,7 @@ document.addEventListener("DOMContentLoaded", function()
 					+'</a>';
 				mainButtons.appendChild(download_listIndexLayer);
 				//
-				addTopButton_github(
-					githubUrl,
-					shortVersionString
-				)
+				addTopButton_github(githubUrl, shortVersionString)
 				//
 				// insert bottom button
 				var bottom_downloadButtonLayer; // not wrapped in an 'li'
