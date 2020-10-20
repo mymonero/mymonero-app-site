@@ -30,7 +30,7 @@
 "use strict";
 //
 
-const desktopVersionString = '1.1.17'
+const desktopVersionString = '1.1.18'
 const iosVersionString = '1.1.16'
 const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
 
