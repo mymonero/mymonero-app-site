@@ -20,7 +20,7 @@ description: > # this means to ignore newlines until "baseurl:"
   MyMonero is the simplest way to use private digital cash, at the sweet spot between security, convenience, and features.
 baseurl: "" # the subpath of your site, e.g. /blog
 notification: > 
-  We have officially opened our beta program for the new MyMonero Android application. <a href="https://play.google.com/apps/testing/com.mymonero.official_android_application">Become a tester by clicking here</a> 
+The official MyMonero Android app is now live in the Google Play Store. <a href="https://play.google.com/store/apps/details?id=com.mymonero.official_android_application">Check it out here.</a> 
 url: "https://mymonero.com" # the base hostname & protocol for your site, e.g. http://example.com
 
 # Build settings
