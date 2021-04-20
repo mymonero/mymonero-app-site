@@ -30,13 +30,14 @@
 "use strict";
 //
 
-const desktopVersionString = '1.1.19'
-const iosVersionString = '1.1.19'
+const desktopVersionString = '1.1.20'
+const iosVersionString = '1.1.20'
 const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
 
 const downloadLink__mac = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.dmg`
 const downloadLink__win = `${githubUrl}/v${desktopVersionString}/MyMonero-Setup-${desktopVersionString}.exe`
 const downloadLink__linux = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.AppImage`
+const downloadLink__android = `https://play.google.com/store/apps/details?id=com.mymonero.official_android_application`
 const downloadLink__ios = "https://apps.apple.com/us/app/apple-store/id1372508199"
 
 // https://github.com/mymonero/mymonero-app-js/releases/download/v1.1.13/MyMonero-Setup-1.1.13.exe
@@ -47,7 +48,9 @@ function getOS()
 {
 	const userAgent = window.navigator.userAgent || window.navigator.vendor || window.opera;
 	const platform = window.navigator.platform;
-	if (['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'Mac OS X', 'macOS'].indexOf(platform) !== -1) {
+	if (/Android/.test(userAgent) || /Android/.test(platform)) {
+		return 'Android';
+	} else if (['Macintosh', 'MacIntel', 'MacPPC', 'Mac68K', 'Mac OS X', 'macOS'].indexOf(platform) !== -1) {
 		return 'Mac OS';
 	} else if (['iPhone', 'iPad', 'iPod', 'iOS'].indexOf(platform) !== -1 && !window.MSStream) {
 		return 'iOS';
@@ -55,8 +58,6 @@ function getOS()
 		return 'Windows';
 	} else if (/windows phone/i.test(userAgent)) { // Windows Phone must come first because its UA may also contain "Android"
 		return 'Windows Phone';
-	} else if (/Android/.test(userAgent) || /Android/.test(platform)) {
-		return 'Android';
 	} else if (/(Linux|Ubuntu|Debian|CentOS|Fedora|FreeBSD|Gentoo|Mint|Sailfish|Slackware|RedHat|CrOS)/.test(userAgent)) {
 		return 'Linux';
 	}
@@ -101,6 +102,12 @@ document.addEventListener("DOMContentLoaded", function()
 			githubUrl: desktopGitHubUrl,
 			version: desktopVersionString
 		},
+		android: {
+			downloadUrl: downloadLink__android,
+			downloadTitleSuffix: ' (Android)',
+			githubUrl: 'https://github.com/mymonero/mymonero-android-js',
+			version: desktopVersionString
+		},
 		ios: {
 			downloadUrl: downloadLink__ios,
 			downloadTitleSuffix: ' &rarr; App Store',
@@ -111,6 +118,7 @@ document.addEventListener("DOMContentLoaded", function()
 	document.querySelector('a.mac-download-link').setAttribute('href', downloadLink__mac)
 	document.querySelector('a.win-download-link').setAttribute('href', downloadLink__win)
 	document.querySelector('a.linux-download-link').setAttribute('href', downloadLink__linux)
+	document.querySelector('a.android-download-link').setAttribute('href', downloadLink__android)
 	//
 	// Initialiser
 	//
@@ -171,16 +179,12 @@ document.addEventListener("DOMContentLoaded", function()
 			}
 			//
 			const isAndroid = osName.match(/^Android$/)
-			if (isAndroid) {
-				addQuickAccessWebWalletTopButton()
-				var platform_releasesInfo = releasesInfo["ios"] // for now
-				addTopButton_github(
-					platform_releasesInfo.githubUrl,
-					platform_releasesInfo.version
-				)
-			} else {
+			console.log(osName);
+			{
 				var releasesInfo_key = null;
-				if (osName.match(/^(Mac OS)$/)) {
+				if (isAndroid) {
+					releasesInfo_key = 'android'
+				} else if (osName.match(/^(Mac OS)$/)) {
 					releasesInfo_key = 'mac'
 				} else if (osName.match(/^(Windows)$/)) {
 					releasesInfo_key = 'windows'
