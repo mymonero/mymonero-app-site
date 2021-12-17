@@ -27,8 +27,6 @@ url: "https://mymonero.com" # the base hostname & protocol for your site, e.g. h
 markdown: kramdown
 gems:
   - jekyll-feed
-include:
-  - _headers
 exclude:
   - Gemfile
   - Gemfile.lock
@@ -37,5 +35,13 @@ exclude:
 sass:
     sass_dir: assets/_scss
     style: compressed
+
+netlify:
+  headers:
+    - paths:
+        - /*
+      headers:
+        - "X-Frame-Options: DENY"
+        - "X-XSS-Protection: 1; mode=block"
 
 # Notification var
