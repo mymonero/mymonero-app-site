@@ -27,6 +27,8 @@ url: "https://mymonero.com" # the base hostname & protocol for your site, e.g. h
 markdown: kramdown
 gems:
   - jekyll-feed
+include:
+  - _headers
 exclude:
   - Gemfile
   - Gemfile.lock
