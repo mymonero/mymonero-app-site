@@ -44,6 +44,6 @@ netlify:
         - "X-Frame-Options: DENY"
         - "X-XSS-Protection: 1; mode=block"
         - "X-Frame-Options: SAMEORIGIN"
-        - "Content-Security-Policy: script-src 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app https://app.intercom.io https://widget.intercom.io https://js.intercomcdn.com; script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app https://app.netlify.com https://widget.intercom.io; font-src 'self' https://app.netlify.com; object-src 'none'; base-uri 'none';"
+        - "Content-Security-Policy: default-src: 'self' https://app.netlify.com ; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app https://app.intercom.io https://widget.intercom.io https://js.intercomcdn.com; script-src-elem 'self' 'unsafe-inline' https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app https://app.netlify.com https://widget.intercom.io https://js.intercomcdn.com; font-src 'self' https://app.netlify.com; object-src 'none'; base-uri 'none';"
         - "Cache-Control: public, max-age=360000"
 # Notification var
