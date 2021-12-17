@@ -44,6 +44,6 @@ netlify:
         - "X-Frame-Options: DENY"
         - "X-XSS-Protection: 1; mode=block"
         - "X-Frame-Options: SAMEORIGIN"
-        - "Content-Security-Policy: object-src 'none'; default-src 'self'; script-src 'nonce-{random}' 'unsafe-inline' 'unsafe-eval' 'strict-dynamic' https: http: https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app; base-uri 'none';"
+        - "Content-Security-Policy: default-src https://cdn.jsdelivr.net https://netlify-cdp-loader.netlify.app; child-src 'none'; object-src 'none';"
         - "Cache-Control: public, max-age=360000"
 # Notification var
