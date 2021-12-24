@@ -1,44 +1,45 @@
 # MyMonero Website
 
-## License and Copyrights
+<p align="center">
+  <img alt="MyMonero" src="https://user-images.githubusercontent.com/1645428/146000939-b06f8fd3-9ed2-4a5e-bdd6-3981281dde9c.png">
+</p>
+<p align="center">
+  MyMonero Website
+</p>
 
-See `LICENSE.txt` for license.
+This is the MyMonero website source for https://mymonero.com.
 
-All app source code and assets copyright © 2014-2021 by MyMonero. All rights reserved.
+Written with Jekyll, SCSS, HTML, and Javascript
 
-## Architecture Notes
-
-* Written with Jekyll, SCSS, HTML, and Javascript
-
-
-## Repository Setup
+-----
+## Installation
 
 ### Pre-requisites
 
-* Install Ruby using your package manager. E.g. for Ubuntu (`sudo apt-get install ruby`)
+Install Ruby. [Ruby Installation Documentations](https://www.ruby-lang.org/en/documentation/installation/)
 
-* Install Ruby Development tools. E.g. for Ubuntu (`sudo apt-get install ruby2.7-dev`)
+Install bundler 
+```bash 
+gem install bundler
+```
 
-* Jekyll (`gem install jekyll`)
+### Setup
 
-* bundler (`gem install bundler`)
+Clone or download this repo.
+```bash
+git clone https://github.com/mymonero/mymonero-app-site.git
+cd mymonero-app-site
+```
 
-### Running dev server
+Run the bundle installer
+```bash
+bundle install
+```
 
-#### Setup
-
-1. Clone or download this repo.
-
-2. `cd` into the repo directory.
-
-3. `bundle install`
-
-#### Running
-
-1. Run `jekyll serve` 
-
-	* Note: you may receive an error similar to the following: "/usr/lib/ruby/2.7.0/bundler/runtime.rb:312:in "check_for_activated_spec!': You have already activated public_suffix 4.0.6, but your Gemfile requires public_suffix 3.0.3. Prepending `bundle exec` to your command may solve this. (Gem::LoadError)" need to prefix this with `bundle exec` if you get a matching error
-
+Start the development server 
+```bash
+bundle exec jekyll serve
+```
 ## Contributing
 
 ### Testing
@@ -58,3 +59,9 @@ Please submit any bugs as Issues unless they have already been reported.
 
 * ⛄️ `tfi_charmers` Built v1 jekyll site; Bug fixes & design guidance
 
+-----
+## License and Copyrights
+
+See `LICENSE.txt` for license.
+
+All app source code and assets copyright © 2014-2021 by MyMonero. All rights reserved.
