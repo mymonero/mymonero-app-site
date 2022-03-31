@@ -57,7 +57,7 @@ permalink: /yat
             eid = decodeURIComponent(eid);
             let regex = /^[A-z0-9-_]+$/
             let refresh_tokenIsAlphanumeric = refresh_token.match(regex);
-            console.log(refresh_tokenIsAlphanumeric)
+            
             if (refresh_tokenIsAlphanumeric == "array") {
                   throw new Error("Non-alphanumeric refresh_token");
             }
@@ -72,23 +72,23 @@ permalink: /yat
             if (userAgent.indexOf("Android") !== -1) {
                   let element = document.getElementById("android-instructions")
                   element.style.display = "block";
-                  console.log("Android")
+                  // console.log("Android")
                   redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
             } else if (userAgent.indexOf("iOS") !== -1) {
                   let element = document.getElementById("ios-instructions")
                   element.style.display = "block";
                   // Add a message to the page body telling the user to click the "Open in MyMonero" link at the top of the screen
-                  console.log("iOS")
+                  // console.log("iOS")
             } else if (userAgent.indexOf("Windows") !== -1) {
                   let element = document.getElementById("windows-instructions")
                   element.style.display = "block";
                   redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
-                  console.log("Windows")
+                  // console.log("Windows")
             } else if (userAgent.indexOf("Macintosh") !== -1) {
                   let element = document.getElementById("macintosh-instructions")
-                  console.log(element);
+                  // console.log(element);
                   element.style.display = "block";
-                  console.log("Macintosh")
+                  // console.log("Macintosh")
                   // mymonero://yat-deep-link?eid=%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82&refresh_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NTEyZDZhNy1kMTc3LTQ0NjktYjMwMy0xYWE0OTlhZjgyYjUiLCJpc3MiOiJlbW9qaS1pZC10b2tlbi1pc3N1ZXIiLCJleHAiOjE2NTExNDMyMDYsInNjb3BlcyI6WyJ0b2tlbjpyZWZyZXNoIl0sImlzc3VlZCI6MTY0ODQ2NDgwNiwiYWN0aXZlMmZhIjowfQ.bkkslCMILtug0dzN9rsc_4kZ-WCga05Xd5nYrsDzn-Q
                   redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
             } else {
