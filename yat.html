@@ -7,12 +7,12 @@ permalink: /yat
             Oops, you probably ended up here by accident
       </div>
       
-      <!-- <div id="yat-instructions" class="wrap bodytext">
-            <p><h2>Yat wallet integration is coming to MyMonero in 2022</h2></p>
-            <p>MyMonero users can now buy a Yat via MyMonero</p>
-            <p>Development is underway to add additional Yat functionality, to be released early next year</p>
-            <p>Soon, MyMonero users will be able to manage and connect any of your Yats to your selected MyMonero wallet, so that Monero payments can be made using your Yat</p>
-      </div> -->
+      <div id="yat-instructions" class="wrap bodytext">
+            <p><h2>Yat wallet integration has arrived</h2></p>
+            <p>MyMonero users can now link their existing Yats to their MyMonero wallets</p>
+            <p>Users can also purchase Yats through MyMonero</p>
+            <p>To get started, download the April 2022 desktop release. Support for Android and iOS will be released soon</p>
+      </div>
       <div id="macintosh-instructions" class="wrap bodytext">
             <p>Congratulations on linking your Yat</p>
             <p>To complete the process, your device will now attempt to open MyMonero.</p>
@@ -53,55 +53,60 @@ permalink: /yat
       let userAgent = navigator.userAgent;
       let validationSucceeded;
       // explicitly check params are safe to inject into a URL
-      try {
-            eid = decodeURIComponent(eid);
-            let regex = /^[A-z0-9-_]+$/
-            let refresh_tokenIsAlphanumeric = refresh_token.match(regex);
-            
-            if (refresh_tokenIsAlphanumeric == "array") {
-                  throw new Error("Non-alphanumeric refresh_token");
+      if (eid !== null) {
+            try {
+                  eid = decodeURIComponent(eid);
+                  let regex = /^[A-z0-9-_]+$/
+                  let refresh_tokenIsAlphanumeric = refresh_token.match(regex);
+                  
+                  if (refresh_tokenIsAlphanumeric == "array") {
+                        throw new Error("Non-alphanumeric refresh_token");
+                  }
+                  validationSucceeded = true;
+            } catch (error) {
+                  validationSucceeded = false;
+                  throw error;
             }
-            validationSucceeded = true;
-      } catch (error) {
-            validationSucceeded = false;
-            throw error;
-      }
 
-      if (validationSucceeded) {
-            let redirectUrl;
-            if (userAgent.indexOf("Android") !== -1) {
-                  let element = document.getElementById("android-instructions")
-                  element.style.display = "block";
-                  // console.log("Android")
-                  redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
-            } else if (userAgent.indexOf("iOS") !== -1) {
-                  let element = document.getElementById("ios-instructions")
-                  element.style.display = "block";
-                  // Add a message to the page body telling the user to click the "Open in MyMonero" link at the top of the screen
-                  // console.log("iOS")
-            } else if (userAgent.indexOf("Windows") !== -1) {
-                  let element = document.getElementById("windows-instructions")
-                  element.style.display = "block";
-                  redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
-                  // console.log("Windows")
-            } else if (userAgent.indexOf("Macintosh") !== -1) {
-                  let element = document.getElementById("macintosh-instructions")
-                  // console.log(element);
-                  element.style.display = "block";
-                  // console.log("Macintosh")
-                  // mymonero://yat-deep-link?eid=%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82&refresh_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NTEyZDZhNy1kMTc3LTQ0NjktYjMwMy0xYWE0OTlhZjgyYjUiLCJpc3MiOiJlbW9qaS1pZC10b2tlbi1pc3N1ZXIiLCJleHAiOjE2NTExNDMyMDYsInNjb3BlcyI6WyJ0b2tlbjpyZWZyZXNoIl0sImlzc3VlZCI6MTY0ODQ2NDgwNiwiYWN0aXZlMmZhIjowfQ.bkkslCMILtug0dzN9rsc_4kZ-WCga05Xd5nYrsDzn-Q
-                  redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
+            if (validationSucceeded) {
+                  let redirectUrl;
+                  if (userAgent.indexOf("Android") !== -1) {
+                        let element = document.getElementById("android-instructions")
+                        element.style.display = "block";
+                        // console.log("Android")
+                        redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
+                  } else if (userAgent.indexOf("iOS") !== -1) {
+                        let element = document.getElementById("ios-instructions")
+                        element.style.display = "block";
+                        // Add a message to the page body telling the user to click the "Open in MyMonero" link at the top of the screen
+                        // console.log("iOS")
+                  } else if (userAgent.indexOf("Windows") !== -1) {
+                        let element = document.getElementById("windows-instructions")
+                        element.style.display = "block";
+                        redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
+                        // console.log("Windows")
+                  } else if (userAgent.indexOf("Macintosh") !== -1) {
+                        let element = document.getElementById("macintosh-instructions")
+                        // console.log(element);
+                        element.style.display = "block";
+                        // console.log("Macintosh")
+                        // mymonero://yat-deep-link?eid=%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82%F0%9F%98%82&refresh_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI2NTEyZDZhNy1kMTc3LTQ0NjktYjMwMy0xYWE0OTlhZjgyYjUiLCJpc3MiOiJlbW9qaS1pZC10b2tlbi1pc3N1ZXIiLCJleHAiOjE2NTExNDMyMDYsInNjb3BlcyI6WyJ0b2tlbjpyZWZyZXNoIl0sImlzc3VlZCI6MTY0ODQ2NDgwNiwiYWN0aXZlMmZhIjowfQ.bkkslCMILtug0dzN9rsc_4kZ-WCga05Xd5nYrsDzn-Q
+                        redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
+                  } else {
+                        // We assume the user is on Linux
+                        redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
+                  } 
+                  let retryLinks = document.getElementsByClassName("retry-link");
+                  for (let elem of retryLinks) {
+                        elem.href = redirectUrl;
+                  }
+                  window.location.href = redirectUrl;
             } else {
-                  // We assume the user is on Linux
-                  redirectUrl = "mymonero://yat-deep-link?" + "eid=" + eid + "&refresh_token=" + refresh_token;
-            } 
-            let retryLinks = document.getElementsByClassName("retry-link");
-            for (let elem of retryLinks) {
-                  elem.href = redirectUrl;
+                  let element = document.getElementById("malformed-url");
+                  element.style.display = "block"
             }
-            window.location.href = redirectUrl;
       } else {
-            let element = document.getElementById("malformed-url");
+            let element = document.getElementById("yat-instructions");
             element.style.display = "block"
       }
 </script>
