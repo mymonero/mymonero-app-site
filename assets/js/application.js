@@ -31,7 +31,7 @@
 //
 
 const desktopVersionString = '1.2.7'
-const iosVersionString = '1.1.21'
+const iosVersionString = '1.2.3'
 const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
 
 const downloadLink__mac = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.dmg`
@@ -106,7 +106,7 @@ document.addEventListener("DOMContentLoaded", function()
 			downloadUrl: downloadLink__android,
 			downloadTitleSuffix: ' (Android)',
 			githubUrl: 'https://github.com/mymonero/mymonero-android-js',
-			version: desktopVersionString
+			version: "1.2.3"
 		},
 		ios: {
 			downloadUrl: downloadLink__ios,
