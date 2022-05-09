@@ -36,7 +36,7 @@ sass:
     sass_dir: assets/_scss
     style: compressed
 
-include: [".well-known"]
+include: [".well-known", "analytics.txt"]
 
 netlify:
   headers:
