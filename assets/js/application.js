@@ -30,8 +30,8 @@
 "use strict";
 //
 
-const desktopVersionString = '1.2.7'
-const iosVersionString = '1.2.3'
+const desktopVersionString = '1.3.0'
+const mobileVersionString = '1.3.1'
 const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
 
 const downloadLink__mac = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.dmg`
@@ -106,13 +106,13 @@ document.addEventListener("DOMContentLoaded", function()
 			downloadUrl: downloadLink__android,
 			downloadTitleSuffix: ' (Android)',
 			githubUrl: 'https://github.com/mymonero/mymonero-android-js',
-			version: "1.2.3"
+			version: mobileVersionString
 		},
 		ios: {
 			downloadUrl: downloadLink__ios,
 			downloadTitleSuffix: ' &rarr; App Store',
 			githubUrl: 'https://github.com/mymonero/mymonero-app-ios',
-			version: iosVersionString
+			version: mobileVersionString
 		}
 	}
 	document.querySelector('a.mac-download-link').setAttribute('href', downloadLink__mac)
