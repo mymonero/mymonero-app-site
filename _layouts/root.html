@@ -18,33 +18,17 @@
     <script src="//cdn.jsdelivr.net/emojione/3.0.2/lib/js/emojione.min.js"></script>
     <script src="{{ site.baseurl }}/assets/js/application.js?12"></script>
 
-{% if jekyll.environment == "production" %} 
-  {% assign intercomAppId = "hi3rzlw0" %}
-{% else %}
-  {% assign intercomAppId = "jdep8jp4" %}
-{% endif %}
-
     
-    <script>
-      window.intercomSettings = {
-        app_id: "{{ intercomAppId }}"
-      };
+<script type="text/javascript">
+window.helpcrunchSettings = {
+  organization: 'mymonero',
+  appId: 'abe66af3-5f67-462c-ac80-a544d6170784',
+};
+</script>
+
+
+<script type="text/javascript">
+    (function(w,d){var hS=w.helpcrunchSettings;if(!hS||!hS.organization){return;}var widgetSrc='https://embed.helpcrunch.com/sdk.js';w.HelpCrunch=function(){w.HelpCrunch.q.push(arguments)};w.HelpCrunch.q=[];function r(){if (d.querySelector('script[src="' + widgetSrc + '"')) { return; }var s=d.createElement('script');s.async=1;s.type='text/javascript';s.src=widgetSrc;(d.body||d.head).appendChild(s);}if(d.readyState === 'complete'||hS.loadImmediately){r();} else if(w.attachEvent){w.attachEvent('onload',r)}else{w.addEventListener('load',r,false)}})(window, document)
   </script>
-
-
-  <script>(function(){var w=window;var ic=w.Intercom;if(typeof ic==="function"){ic('reattach_activator');ic('update',intercomSettings);}else{var d=document;var i=function(){i.c(arguments)};i.q=[];i.c=function(args){i.q.push(args)};w.Intercom=i;function l(){var s=d.createElement('script');s.type='text/javascript';s.async=true;s.src='https://widget.intercom.io/widget/{{ intercomAppId }}';var x=d.getElementsByTagName('script')[0];x.parentNode.insertBefore(s,x);}if(w.attachEvent){w.attachEvent('onload',l);}else{w.addEventListener('load',l,false);}}})()</script>
-
-{% if jekyll.environment == "production" %} 
-    <script>
-      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-
-      ga('create', 'UA-53312765-3', 'auto');
-      ga('send', 'pageview');
-    </script>
-{% endif %}
-
   </body>
 </html>
