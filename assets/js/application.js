@@ -35,7 +35,7 @@ const mobileVersionString = '1.3.8'
 const githubUrl = "https://github.com/mymonero/mymonero-app-js/releases/download";
 
 const downloadLink__mac = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.dmg`
-const downloadLink__win = `${githubUrl}/v${desktopVersionString}/MyMonero-Setup-${desktopVersionString}.exe`
+const downloadLink__win = `${githubUrl}/v${desktopVersionString}/MyMonero.Setup.${desktopVersionString}.exe`
 const downloadLink__linux = `${githubUrl}/v${desktopVersionString}/MyMonero-${desktopVersionString}.AppImage`
 const downloadLink__android = `https://play.google.com/store/apps/details?id=com.mymonero.official_android_application`
 const downloadLink__ios = "https://apps.apple.com/us/app/apple-store/id1372508199"
