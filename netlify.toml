@@ -1,6 +1,8 @@
 [build]
-  command = "gem update --system && bundle install && bundle exec jekyll build"
+  command = "bash bin/netlify-build.sh"
   publish = "_site"
+  ignore = "exit 0"
 
 [build.environment]
   RUBY_VERSION = "2.7.8"
+  BUNDLE_GEMFILE = "Gemfile"
