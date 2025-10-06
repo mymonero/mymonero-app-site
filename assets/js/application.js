@@ -115,16 +115,26 @@ document.addEventListener("DOMContentLoaded", function()
 			version: mobileVersionString
 		}
 	}
-	document.querySelector('a.mac-download-link').setAttribute('href', downloadLink__mac)
-	document.querySelector('a.win-download-link').setAttribute('href', downloadLink__win)
-	document.querySelector('a.linux-download-link').setAttribute('href', downloadLink__linux)
-	document.querySelector('a.android-download-link').setAttribute('href', downloadLink__android)
+	
+	// Only set download links if elements exist
+	const macLink = document.querySelector('a.mac-download-link');
+	const winLink = document.querySelector('a.win-download-link');
+	const linuxLink = document.querySelector('a.linux-download-link');
+	const androidLink = document.querySelector('a.android-download-link');
+	
+	if (macLink) macLink.setAttribute('href', downloadLink__mac);
+	if (winLink) winLink.setAttribute('href', downloadLink__win);
+	if (linuxLink) linuxLink.setAttribute('href', downloadLink__linux);
+	if (androidLink) androidLink.setAttribute('href', downloadLink__android);
 	//
 	// Initialiser
 	//
 	mm.initialiser = {
 		uaParser: function() {
-			var mainButtons = document.querySelector(".download-buttons")
+			var mainButtons = document.querySelector(".download-buttons");
+			if (!mainButtons) {
+				return; // Not on homepage, skip download button logic
+			}
 			function addDownloadButtons(downloadUrl, githubUrl,	shortVersionString,	downloadTitleSuffix_orUndef) {
 				//
 				// insert top buttons
@@ -175,7 +185,10 @@ document.addEventListener("DOMContentLoaded", function()
 			//
 			function updateOsName(releasesInfo_key)
 			{
-				document.querySelector(".os").innerHTML = 'for ' + osDisplayNameFor(releasesInfo_key, osName);
+				const osElement = document.querySelector(".os");
+				if (osElement) {
+					osElement.innerHTML = 'for ' + osDisplayNameFor(releasesInfo_key, osName);
+				}
 			}
 			//
 			const isAndroid = osName.match(/^Android$/)
@@ -227,13 +240,15 @@ document.addEventListener("DOMContentLoaded", function()
 		//
 		emojione: function() {
 			if(osName.match(/^((?!(Mac OS|iOS|Android)).)*$/)) {
-				emojione.imagePathPNG = '//cdn.jsdelivr.net/emojione/assets/3.0/png/64/';
-				var emojis = document.querySelectorAll('.convert-emoji');
-				Array.prototype.forEach.call(emojis, function(el, i){
-					var original = el.innerHTML,
-							converted = emojione.toImage(original);
-					el.outerHTML = converted;
-				});
+				if (typeof emojione !== 'undefined') {
+					emojione.imagePathPNG = '//cdn.jsdelivr.net/emojione/assets/3.0/png/64/';
+					var emojis = document.querySelectorAll('.convert-emoji');
+					Array.prototype.forEach.call(emojis, function(el, i){
+						var original = el.innerHTML,
+								converted = emojione.toImage(original);
+						el.outerHTML = converted;
+					});
+				}
 			}
 		}
 	};
@@ -243,6 +258,64 @@ document.addEventListener("DOMContentLoaded", function()
 	var mymonero = mm.initialiser;
 	mymonero.uaParser();
 	mymonero.emojione();
+
+	//
+	// Sunset Modal
+	//
+	const sunsetNotification = document.getElementById('sunset-notification');
+	const openSunsetModal = document.getElementById('open-sunset-modal');
+	const sunsetModal = document.getElementById('sunset-modal');
+	const modalClose = document.getElementById('modal-close');
+
+	function openModal() {
+		if (sunsetModal) {
+			sunsetModal.classList.add('active');
+			document.body.style.overflow = 'hidden';
+		}
+	}
+
+	function closeModal() {
+		if (sunsetModal) {
+			sunsetModal.classList.remove('active');
+			document.body.style.overflow = '';
+		}
+	}
+
+	if (sunsetNotification) {
+		sunsetNotification.addEventListener('click', openModal);
+	}
+
+	if (openSunsetModal) {
+		openSunsetModal.addEventListener('click', function(e) {
+			e.preventDefault();
+			openModal();
+		});
+	}
+
+	if (modalClose) {
+		modalClose.addEventListener('click', closeModal);
+	}
+
+	if (sunsetModal) {
+		sunsetModal.addEventListener('click', function(e) {
+			if (e.target === sunsetModal) {
+				closeModal();
+			}
+		});
+
+		// Close on escape key
+		document.addEventListener('keydown', function(e) {
+			if (e.key === 'Escape' && sunsetModal.classList.contains('active')) {
+				closeModal();
+			}
+		});
+
+		// Check for URL parameter to auto-open modal
+		const urlParams = new URLSearchParams(window.location.search);
+		if (urlParams.get('announcement') === '1' || urlParams.get('announcement') === 'true') {
+			openModal();
+		}
+	}
 });
 //
 })();

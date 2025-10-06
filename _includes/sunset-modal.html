@@ -1,0 +1,132 @@
+<div class="modal-overlay" id="sunset-modal">
+    <div class="modal-content">
+        <button class="modal-close" id="modal-close">&times;</button>
+        <img src="{{ site.baseurl }}/assets/images/transition.jpg" alt="MyMonero to Cake Wallet Transition" class="modal-image">
+        <div class="modal-body">
+            <h1><strong>Announcing MyMonero's sunset and stewardship transition to Cake Wallet</strong></h1>
+
+            <p>Dear Monero Community,</p>
+
+            <p>After over a decade of serving the Monero ecosystem, MyMonero has decided to sunset its wallet service on Tuesday, January 06, 2026. We've worked closely with the Cake Wallet team to help provide continuity for our users, given their strong track record in the Monero community. We understand the trust you've placed in us since 2014, and we're committed to ensuring a smooth, secure, and privacy-preserving transition for all users.</p>
+
+            <h2><strong>Our Commitment to You</strong></h2>
+
+            <p>Cake Wallet, as one of the most trusted names in the Monero ecosystem, provides a seamless migration path that maintains the privacy standards you expect. Cake Wallet is the ideal successor precisely because the Cake team shares our commitment to user privacy and has earned the community's trust through years of open-source, first-class development and privacy-first design.</p>
+
+            <h2><strong>What This Means for Your Privacy</strong></h2>
+
+            <h3><strong>No View Keys Will Ever Be Shared</strong></h3>
+
+            <p>This is critical: Cake Wallet will never receive your view keys, wallet addresses, or transaction history from MyMonero. Cake Wallet and MyMonero's joint commitment to user privacy meant that from the moment this process started, both parties agreed to ensure that this data would never be shared.</p>
+
+            <h3><strong>Complete Data Destruction</strong></h3>
+
+            <p>Within 30 days of the service sunset all MyMonero server data will be permanently destroyed, including:</p>
+
+            <ul>
+                <li>All view keys currently stored for light wallet functionality</li>
+                <li>Transaction history and metadata</li>
+                <li>Account information and wallet data</li>
+                <li>Server logs and backups</li>
+            </ul>
+
+            <p>After this wipe has happened, our data center partner will assist in decommissioning the MyMonero servers in a way that ensures the data cannot be recovered.</p>
+
+            <h3><strong>Your seed, your control</strong></h3>
+
+            <p><strong><a href="https://docs.cakewallet.com/tutorials/mymonero/">Option 1 - Restore in Cake Wallet</a></strong></p>
+
+            <p>You always have full control of your funds from MyMonero which makes the migration process as easy as 1-2-3:</p>
+
+            <ol>
+                <li>Export your 25-word Monero seed phrase from MyMonero
+                    <ol>
+                        <li>(<em>Optional</em>) Make a note of your wallet restore height to speed up initial wallet synchronization</li>
+                    </ol>
+                </li>
+                <li>Open Cake Wallet, select Restore, and choose Monero</li>
+                <li>Enter your seed phrase and (<em>optional</em>) your saved restore height from MyMonero into Cake Wallet</li>
+            </ol>
+
+            <p><strong>Option 2 - Transfer your XMR to a new wallet in Cake Wallet</strong></p>
+
+            <p>Want to have the latest and greatest seed format that Monero has to offer <em>and</em> skip the initial sync? Instead of restoring your existing MyMonero 25-word legacy seed in Cake Wallet, create a new Polyseed wallet in Cake Wallet and simply send your funds over from MyMonero.</p>
+
+            <ol>
+                <li>In Cake Wallet, create a new wallet, select Monero, and use the default Polyseed format</li>
+                <li>Name the wallet, and hit create</li>
+                <li>Tap on receive on the nav bar at the bottom, and copy the address displayed</li>
+                <li>In MyMonero, go to Send, paste the new address, and send all
+                    <ol>
+                        <li>(Optional) if you'd like to first test the new address, feel free to start with a small amount</li>
+                    </ol>
+                </li>
+            </ol>
+
+            <p><strong>Option 3 - One seed, all your crypto</strong></p>
+
+            <p>If you use any other cryptocurrencies alongside Monero and want to simplify your life, Cake Wallet now supports using a standard 12-word BIP 39 seed for Monero alongside Bitcoin, Ethereum, Litecoin, and most other currencies in Cake Wallet.</p>
+
+            <ol>
+                <li>In Cake Wallet, create a new wallet, select Monero, and change to the BIP 39 12-word seed option</li>
+                <li>Name your wallet and hit create</li>
+                <li>Want to add other crypto wallets to the same seed? Simply hit restore, choose the currency, and choose to use a shared wallet group</li>
+            </ol>
+
+            <h2><strong>Why Cake Wallet?</strong></h2>
+
+            <p>We chose Cake Wallet as the ideal successor because they:</p>
+
+            <ul>
+                <li>Never require view keys — your transaction privacy remains intact</li>
+                <li>Are fully open source — code is auditable by the community</li>
+                <li>Have first-class Monero support — not just as an afterthought</li>
+                <li>Share our values — privacy, security, and user sovereignty</li>
+                <li>Have proven reliability — serving the Monero community since 2018</li>
+            </ul>
+
+            <h2><strong>Timeline</strong></h2>
+
+            <ul>
+                <li>Tuesday, January 06, 2026: MyMonero service completely offline</li>
+                <li>Friday, February 06, 2026: All MyMonero data permanently destroyed</li>
+            </ul>
+
+            <h2><strong>Your Questions Answered</strong></h2>
+
+            <p><strong>"Is this an exit scam?"</strong></p>
+
+            <p>No. You maintain complete control of your funds at all times through your seed phrase. We're providing multiple months of notice and multiple migration options. Your funds are never at risk, as even after the apps are removed from the app stores they will remain on your devices.</p>
+
+            <p><strong>"What about my transaction history?"</strong></p>
+
+            <p>While your transaction history itself will be restored properly in Cake Wallet after initial synchronization, specific transaction details like recipient addresses and transaction keys aren't able to be restored from the blockchain.</p>
+
+            <p>If you require these additional details for any reason, be sure to export your transaction history as CSV from MyMonero.</p>
+
+            <p><strong>"Why is MyMonero shutting down?"</strong></p>
+
+            <p>After a decade of service, we believe it's time for the ecosystem to move toward more decentralized solutions. Light wallets requiring view keys are increasingly at odds with Monero's privacy evolution. We'd rather sunset gracefully and hand the reins to a fantastic successor than compromise on privacy.</p>
+
+            <p><strong>"What if I do nothing?"</strong></p>
+
+            <p>Your seed phrase will always work with any Monero wallet. However, after Tuesday, January 06, 2026, you won't be able to access MyMonero's servers to view your balance or send transactions through our service.</p>
+
+            <h2><strong>Thank You</strong></h2>
+
+            <p>We're deeply grateful for the trust you've placed in MyMonero over the years. While this chapter is closing, we're proud to have contributed to Monero's growth and to hand off our users to a wallet that shares our commitment to privacy and security. The Monero community has always been about more than any single service or application. It's about the fundamental right to financial privacy. We're confident that Cake Wallet will serve you well in continuing this mission.</p>
+
+            <h2><strong>Questions?</strong></h2>
+
+            <ul>
+                <li>Migration Support: support@mymonero.com</li>
+                <li>Cake Wallet 24/7 Support: support@cakewallet.com</li>
+                <li>Community Discussion: r/Monero migration megathread</li>
+            </ul>
+
+            <p>The MyMonero Team &amp; Cake Wallet Team</p>
+
+            <p><em>P.S. For those who've been with us since the beginning - thank you. From the early days of the MyMonero web wallet, to our mobile and desktop apps, it's been an honor to serve the Monero community. We're not saying goodbye to Monero, just evolving how we contribute to its mission.</em></p>
+        </div>
+    </div>
+</div>
