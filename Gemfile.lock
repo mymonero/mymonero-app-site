@@ -11,7 +11,7 @@ GEM
       eventmachine (>= 0.12.9)
       http_parser.rb (~> 0)
     eventmachine (1.2.7)
-    ffi (1.17.2)
+    ffi (1.15.5)
     forwardable-extended (2.6.0)
     http_parser.rb (0.8.0)
     i18n (0.9.5)
@@ -70,6 +70,7 @@ PLATFORMS
 DEPENDENCIES
   base64
   csv
+  ffi (~> 1.15.5)
   jekyll (= 3.8.3)
   jekyll-feed (~> 0.6)
   jekyll-netlify-headers
